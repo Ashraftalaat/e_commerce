@@ -26,6 +26,8 @@ class OnBoardingControllerImp extends OnBoardingController {
   @override
   onPageChanged(int index) {
     currentPage = index;
+    // عشان Get builder هتحدث تغيير في الصفحة
+    //update = setstate
     update();
   }
 

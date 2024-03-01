@@ -20,6 +20,7 @@ class LocaleController extends GetxController {
     } else if (sharedPrefLang == "en") {
       language = const Locale("en");
     } else {
+      //لغة الجهاز
       language = Locale(Get.deviceLocale!.languageCode);
     }
     super.onInit();

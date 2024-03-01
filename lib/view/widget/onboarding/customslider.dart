@@ -18,10 +18,8 @@ class CustomSliderOnBoarding extends GetView<OnBoardingControllerImp> {
         return Column(
           children: [
             const SizedBox(height: 60),
-            Text(
-              onBoardingList[i].title!,
-              style: Theme.of(context).textTheme.titleMedium
-            ),
+            Text(onBoardingList[i].title!,
+                style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 90),
             Image.asset(
               onBoardingList[i].image!,
