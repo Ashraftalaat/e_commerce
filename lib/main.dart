@@ -3,7 +3,7 @@ import 'package:e_commerce/core/localization/changelocale.dart';
 import 'package:e_commerce/core/localization/translation.dart';
 import 'package:e_commerce/core/services/serviceslocal.dart';
 import 'package:e_commerce/routs.dart';
-import 'package:e_commerce/view/screen/login.dart';
+import 'package:e_commerce/view/screen/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const Login(),
+      home: const OnBoarding(),
       routes: routes,
     );
   }

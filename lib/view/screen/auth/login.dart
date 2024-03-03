@@ -1,16 +1,20 @@
+import 'package:e_commerce/controller/auth/login_controller.dart';
 import 'package:e_commerce/core/constant/color.dart';
 import 'package:e_commerce/view/widget/auth/custombuttonauth.dart';
 import 'package:e_commerce/view/widget/auth/customtextbodyauth.dart';
 import 'package:e_commerce/view/widget/auth/customtextformauth.dart';
+import 'package:e_commerce/view/widget/auth/customtextgotosigninorsignup.dart';
 import 'package:e_commerce/view/widget/auth/customtexttitleauth.dart';
 import 'package:e_commerce/view/widget/auth/logoauth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
+    LoginControllerImp controller = Get.put(LoginControllerImp());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -37,20 +41,27 @@ class Login extends StatelessWidget {
                 textbody:
                     "Sign In With Your Email And Password OR Continue With Social Media"),
             const SizedBox(height: 25),
-            const CustomTextFormAuth(
+            CustomTextFormAuth(
+                mycontroller: controller.email,
                 texthint: "Enter Your Email",
                 textlabel: "Email",
                 iconData: Icons.email_outlined),
             const SizedBox(height: 30),
-            const CustomTextFormAuth(
+            CustomTextFormAuth(
+                mycontroller: controller.password,
                 texthint: "Enter Your Password",
                 textlabel: "Password",
                 iconData: Icons.lock_outline),
             const SizedBox(height: 45),
-            Text(
-              "Forget Password",
-              textAlign: TextAlign.end,
-              style: Theme.of(context).textTheme.headlineLarge,
+            InkWell(
+              onTap: () {
+                controller.gotoforgetpassword();
+              },
+              child: Text(
+                "Forget Password",
+                textAlign: TextAlign.end,
+                style: Theme.of(context).textTheme.headlineLarge,
+              ),
             ),
             const SizedBox(height: 10),
             CustomButtonAuth(
@@ -60,23 +71,12 @@ class Login extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Don't have an account?",
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                const InkWell(
-                  child: Text(
-                    "Sign Up",
-                    style: TextStyle(color: AppColor.primaryColor),
-                  ),
-                ),
-              ],
+            CustomTextGoToSigninOrSignup(
+              textone: "Don't have an account ?",
+              texttwo: "Sign Up",
+              onTap: () {
+                controller.gotoSignUp();
+              },
             )
           ],
         ),

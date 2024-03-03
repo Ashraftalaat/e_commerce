@@ -4,11 +4,13 @@ class CustomTextFormAuth extends StatelessWidget {
   final String texthint;
   final String textlabel;
   final IconData iconData;
-  const CustomTextFormAuth({super.key, required this.texthint, required this.textlabel, required this.iconData});
+  final TextEditingController mycontroller;
+  const CustomTextFormAuth({super.key, required this.texthint, required this.textlabel, required this.iconData, required this.mycontroller});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: mycontroller,
       decoration: InputDecoration(
         hintText: texthint,
         hintStyle: const TextStyle(fontSize: 12),
