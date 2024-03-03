@@ -41,6 +41,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_local_notifications: ^16.3.2
+  flutter_otp_text_field: ^1.1.1
   flutter_polyline_points: ^2.0.0
   fluttericon: ^2.0.0
   font_awesome_flutter: ^10.7.0
@@ -108,7 +109,6 @@ flutter:
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
-
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -5,6 +5,8 @@ class AppNamesRouts {
   static const String forgetpassword = "/forgetpassword";
   static const String verifycode = "/verifycode";
   static const String resetpasssword = "/resetpassword";
+  static const String successresetpassword = "/successresetpassword";
+  static const String successsignup = "/successsignup";
 
 
   //OnBoarding
