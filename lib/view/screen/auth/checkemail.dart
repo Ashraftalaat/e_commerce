@@ -1,4 +1,4 @@
-import 'package:e_commerce/controller/auth/forgetpassword_controller.dart';
+import 'package:e_commerce/controller/auth/checkemailconroller.dart';
 import 'package:e_commerce/core/constant/color.dart';
 import 'package:e_commerce/view/widget/auth/custombuttonauth.dart';
 import 'package:e_commerce/view/widget/auth/customtextbodyauth.dart';
@@ -7,20 +7,19 @@ import 'package:e_commerce/view/widget/auth/customtexttitleauth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ForgetPassword extends StatelessWidget {
-  const ForgetPassword({super.key});
+class CheckEmail extends StatelessWidget {
+  const CheckEmail({super.key});
 
   @override
   Widget build(BuildContext context) {
-    ForgetPasswordControllerImp controller =
-        Get.put(ForgetPasswordControllerImp());
+    CheckEmailControllerImp controller = Get.put(CheckEmailControllerImp());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Container(
           margin: const EdgeInsets.only(top: 25),
           child: Text(
-            "14".tr,
+            "Check Email",
             style: Theme.of(context)
                 .textTheme
                 .titleMedium!
@@ -34,11 +33,9 @@ class ForgetPassword extends StatelessWidget {
         child: ListView(
           children: [
             const SizedBox(height: 40),
-             CustomTextTitleAuth(texttitle: "27".tr),
+            CustomTextTitleAuth(texttitle: "28".tr),
             const SizedBox(height: 30),
-             CustomTextBodyAuth(
-                textbody:
-                    "29".tr),
+            CustomTextBodyAuth(textbody: "29".tr),
             const SizedBox(height: 25),
             CustomTextFormAuth(
                 mycontroller: controller.email,
@@ -49,7 +46,7 @@ class ForgetPassword extends StatelessWidget {
             CustomButtonAuth(
               text: "30".tr,
               onPressed: () {
-                controller.gotoverifycode();
+                controller.gotoSuccessSignUp();
               },
             ),
           ],

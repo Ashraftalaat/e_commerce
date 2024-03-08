@@ -19,7 +19,7 @@ class CustomButtonAuth extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       color: AppColor.primaryColor,
       onPressed: onPressed,
-      child: Text(text),
+      child: Text(text,style: const TextStyle(fontSize: 18),),
     );
   }
 }

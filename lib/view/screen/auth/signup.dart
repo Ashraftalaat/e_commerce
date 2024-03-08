@@ -20,7 +20,7 @@ class SignUp extends StatelessWidget {
         title: Container(
           margin: const EdgeInsets.only(top: 25),
           child: Text(
-            "Sign Up",
+            "19".tr,
             style: Theme.of(context)
                 .textTheme
                 .titleMedium!
@@ -34,52 +34,54 @@ class SignUp extends StatelessWidget {
         child: ListView(
           children: [
             const SizedBox(height: 40),
-            const CustomTextTitleAuth(texttitle: "Welcome Back"),
+             CustomTextTitleAuth(texttitle: "10".tr),
             const SizedBox(height: 30),
-            const CustomTextBodyAuth(
+             CustomTextBodyAuth(
                 textbody:
-                    "Sign Up With Your Email And Password OR Continue With Social Media"),
+                    "24".tr),
             const SizedBox(height: 25),
             CustomTextFormAuth(
                 mycontroller: controller.username,
-                texthint: "Enter Your Username",
-                textlabel: "Username",
+                texthint: "23".tr,
+                textlabel: "20".tr,
                 iconData: Icons.person_2_outlined),
             const SizedBox(height: 30),
             CustomTextFormAuth(
                 mycontroller: controller.email,
-                texthint: "Enter Your Email",
-                textlabel: "Email",
+                texthint: "12".tr,
+                textlabel: "18".tr,
                 iconData: Icons.email_outlined),
             const SizedBox(height: 30),
             CustomTextFormAuth(
                 mycontroller: controller.phone,
-                texthint: "Enter Your Phone",
-                textlabel: "Phone",
+                texthint:"22".tr,
+                textlabel: "21".tr,
                 iconData: Icons.phone_android),
             const SizedBox(height: 30),
             CustomTextFormAuth(
                 mycontroller: controller.password,
-                texthint: "Enter Your Password",
-                textlabel: "Password",
+                texthint: "13".tr,
+                textlabel: "19".tr,
                 iconData: Icons.lock_outline),
             const SizedBox(height: 45),
             Text(
-              "Forget Password",
+              "14".tr,
               textAlign: TextAlign.end,
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             const SizedBox(height: 10),
             CustomButtonAuth(
-              text: "Sign Up",
-              onPressed: () {},
+              text: "17".tr,
+              onPressed: () {
+                controller.signUp();
+              },
             ),
             const SizedBox(
               height: 40,
             ),
             CustomTextGoToSigninOrSignup(
-              textone: "have an account ?",
-              texttwo: "Sign In",
+              textone: "25".tr,
+              texttwo: "9".tr,
               onTap: () {
                 controller.gotoSignIn();
               },
