@@ -77,7 +77,7 @@ class MyTranslation extends Translations {
           "25": " have an account ? ",
           "26": "SignIn",
           "27": "Check Email",
-          "28": "Success SignUp",
+          "28": "Account successfully created",
           "29": "please Enter Your Email Address To Recive A verification code",
           "30": "check",
           "31": "Go To Login",

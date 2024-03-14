@@ -1,20 +1,20 @@
 import 'package:e_commerce/core/constant/routs.dart';
 import 'package:get/get.dart';
 
-abstract class VerifyCodeController extends GetxController {
+abstract class SuccessResetPasswordController extends GetxController {
   checkCode();
-  gotoResetPassword();
+  gotoIogin();
 }
 
-class VerifyCodeControllerImp extends VerifyCodeController {
+class  SuccessResetPasswordControllerImp extends  SuccessResetPasswordController {
   late String verifycode;
 
   @override
   checkCode() {}
 
   @override
-  gotoResetPassword() {
-    Get.offNamed(AppNamesRouts.resetpasssword);
+  gotoIogin() {
+    Get.offAllNamed(AppNamesRouts.login);
   }
 
   // @override

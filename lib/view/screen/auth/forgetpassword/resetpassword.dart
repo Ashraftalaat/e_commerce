@@ -1,5 +1,6 @@
 import 'package:e_commerce/controller/auth/resetpassword_controller.dart';
 import 'package:e_commerce/core/constant/color.dart';
+import 'package:e_commerce/core/function/vaildinput.dart';
 import 'package:e_commerce/view/widget/auth/custombuttonauth.dart';
 import 'package:e_commerce/view/widget/auth/customtextbodyauth.dart';
 import 'package:e_commerce/view/widget/auth/customtextformauth.dart';
@@ -31,32 +32,43 @@ class ResetPassword extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         //  margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 5),
-        child: ListView(
-          children: [
-            const SizedBox(height: 40),
-             CustomTextTitleAuth(texttitle: "35".tr),
-            const SizedBox(height: 30),
-             CustomTextBodyAuth(textbody: "34".tr),
-            const SizedBox(height: 25),
-            CustomTextFormAuth(
-                mycontroller: controller.password,
-                texthint: "34".tr,
-                textlabel: "19".tr,
-                iconData: Icons.email_outlined),
-            const SizedBox(height: 25),
-            CustomTextFormAuth(
-                mycontroller: controller.rePassword,
-                texthint: "Enter Your RePassword",
-                textlabel: "Confirm",
-                iconData: Icons.email_outlined),
-            const SizedBox(height: 45),
-            CustomButtonAuth(
-              text: "33".tr,
-              onPressed: () {
-                controller.gotoSuccessResetPassword();
-              },
-            ),
-          ],
+        child: Form(
+          key: controller.formstate,
+          child: ListView(
+            children: [
+              const SizedBox(height: 40),
+              CustomTextTitleAuth(texttitle: "35".tr),
+              const SizedBox(height: 30),
+              CustomTextBodyAuth(textbody: "34".tr),
+              const SizedBox(height: 25),
+              CustomTextFormAuth(
+                isNumber: false,
+                  vaild: (val) {
+                    return vaildInput(val!, 5, 100, "password");
+                  },
+                  mycontroller: controller.password,
+                  texthint: "34".tr,
+                  textlabel: "19".tr,
+                  iconData: Icons.email_outlined),
+              const SizedBox(height: 25),
+              CustomTextFormAuth(
+                isNumber: false,
+                  vaild: (val) {
+                    return vaildInput(val!, 5, 100, "password");
+                  },
+                  mycontroller: controller.rePassword,
+                  texthint: "Enter Your RePassword",
+                  textlabel: "Confirm",
+                  iconData: Icons.email_outlined),
+              const SizedBox(height: 45),
+              CustomButtonAuth(
+                text: "33".tr,
+                onPressed: () {
+                  controller.gotoSuccessResetPassword();
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

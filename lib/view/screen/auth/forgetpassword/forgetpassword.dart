@@ -1,5 +1,6 @@
 import 'package:e_commerce/controller/auth/forgetpassword_controller.dart';
 import 'package:e_commerce/core/constant/color.dart';
+import 'package:e_commerce/core/function/vaildinput.dart';
 import 'package:e_commerce/view/widget/auth/custombuttonauth.dart';
 import 'package:e_commerce/view/widget/auth/customtextbodyauth.dart';
 import 'package:e_commerce/view/widget/auth/customtextformauth.dart';
@@ -31,28 +32,33 @@ class ForgetPassword extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         //  margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 5),
-        child: ListView(
-          children: [
-            const SizedBox(height: 40),
-             CustomTextTitleAuth(texttitle: "27".tr),
-            const SizedBox(height: 30),
-             CustomTextBodyAuth(
-                textbody:
-                    "29".tr),
-            const SizedBox(height: 25),
-            CustomTextFormAuth(
-                mycontroller: controller.email,
-                texthint: "12".tr,
-                textlabel: "18".tr,
-                iconData: Icons.email_outlined),
-            const SizedBox(height: 45),
-            CustomButtonAuth(
-              text: "30".tr,
-              onPressed: () {
-                controller.gotoverifycode();
-              },
-            ),
-          ],
+        child: Form(
+          key: controller.formstate,
+          child: ListView(
+            children: [
+              const SizedBox(height: 40),
+              CustomTextTitleAuth(texttitle: "27".tr),
+              const SizedBox(height: 30),
+              CustomTextBodyAuth(textbody: "29".tr),
+              const SizedBox(height: 25),
+              CustomTextFormAuth(
+                isNumber: false,
+                  vaild: (val) {
+                    return vaildInput(val!, 5, 100, "email");
+                  },
+                  mycontroller: controller.email,
+                  texthint: "12".tr,
+                  textlabel: "18".tr,
+                  iconData: Icons.email_outlined),
+              const SizedBox(height: 45),
+              CustomButtonAuth(
+                text: "30".tr,
+                onPressed: () {
+                  controller.gotoverifycode();
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

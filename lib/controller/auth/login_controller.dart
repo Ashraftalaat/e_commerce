@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/constant/routs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 abstract class LoginController extends GetxController {
@@ -9,8 +10,16 @@ abstract class LoginController extends GetxController {
 }
 
 class LoginControllerImp extends LoginController {
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
+
   late TextEditingController email;
   late TextEditingController password;
+  late bool isShowpassword = true;
+
+  showPassword() {
+    isShowpassword = isShowpassword == true ? false : true;
+    update();
+  }
 
   @override
   gotoSignUp() {
@@ -18,7 +27,14 @@ class LoginControllerImp extends LoginController {
   }
 
   @override
-  login() {}
+  login() {
+    var formdata = formstate.currentState;
+    if (formdata!.validate()) {
+      print("vaild");
+    } else {
+      print("not valid");
+    }
+  }
 
   @override
   void onInit() {

@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/constant/routs.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +9,8 @@ abstract class ResetPasswordController extends GetxController {
 }
 
 class ResetPasswordControllerImp extends ResetPasswordController {
+  GlobalKey<FormState> formstate = GlobalKey();
+
   late TextEditingController password;
   late TextEditingController rePassword;
 
@@ -16,7 +19,10 @@ class ResetPasswordControllerImp extends ResetPasswordController {
 
   @override
   gotoSuccessResetPassword() {
-    Get.offNamed(AppNamesRouts.successresetpassword);
+    var formdata = formstate.currentState;
+    if (formdata!.validate()) {
+      Get.offNamed(AppNamesRouts.successresetpassword);
+    }
   }
 
   @override

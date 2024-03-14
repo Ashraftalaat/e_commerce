@@ -19,7 +19,7 @@ class CustomButtonOnBoarding extends GetView<OnBoardingControllerImp> {
         },
         child:  Text(
           "8".tr,
-          style: TextStyle(color: Colors.white, fontSize: 18),
+          style: const TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
     );

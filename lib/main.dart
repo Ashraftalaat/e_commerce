@@ -1,4 +1,4 @@
-import 'package:e_commerce/core/constant/color.dart';
+import 'package:e_commerce/binding.dart';
 import 'package:e_commerce/core/localization/changelocale.dart';
 import 'package:e_commerce/core/localization/translation.dart';
 import 'package:e_commerce/core/services/serviceslocal.dart';
@@ -21,12 +21,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     LocaleController controller = Get.put(LocaleController());
     return GetMaterialApp(
+     
+      
       locale: controller.language,
       translations: MyTranslation(),
       debugShowCheckedModeBanner: false,
-    //  title: 'Flutter Demo',
+      //  title: 'Flutter Demo',
       theme: controller.appTheme,
       home: const Language(),
+       //تم حقن  binding في المشروع كله
+      initialBinding: MyBinding(),
       routes: routes,
     );
   }

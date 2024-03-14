@@ -1,3 +1,4 @@
+import 'package:e_commerce/controller/auth/successresetpassword_controller.dart';
 import 'package:e_commerce/core/constant/color.dart';
 import 'package:e_commerce/view/widget/auth/custombuttonauth.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,8 @@ class SuccessResetPassword extends StatefulWidget {
 class _SuccessResetPasswordState extends State<SuccessResetPassword> {
   @override
   Widget build(BuildContext context) {
+    SuccessResetPasswordControllerImp controller =
+        Get.put(SuccessResetPasswordControllerImp());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -38,16 +41,24 @@ class _SuccessResetPasswordState extends State<SuccessResetPassword> {
             ),
           ),
           const SizedBox(height: 50),
-          Text("37".tr,style: Theme.of(context).textTheme.titleLarge ,),
+          Text(
+            "37".tr,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
           const SizedBox(height: 50),
-           Text("38".tr,style: Theme.of(context).textTheme.bodySmall,),
+          Text(
+            "38".tr,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
           const SizedBox(height: 200),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 25),
             width: double.infinity,
             child: CustomButtonAuth(
-              text: "31".tr, 
-              onPressed: () {},
+              text: "31".tr,
+              onPressed: () {
+                controller.gotoIogin();
+              },
             ),
           ),
         ],
