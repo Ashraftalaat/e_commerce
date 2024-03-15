@@ -28,10 +28,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       //  title: 'Flutter Demo',
       theme: controller.appTheme,
-      home: const Language(),
+     //وضعناها في routes كقيمة افتراضية تظهر في اول البرنامج "/"
+     // home: const Language(),
+     // هنستخدم Getpage بدل منها لاننا نستخدم GetX
+     // routes: routes,
+     getPages: routes,
        //تم حقن  binding في المشروع كله
       initialBinding: MyBinding(),
-      routes: routes,
     );
   }
 }
