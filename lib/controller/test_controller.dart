@@ -18,12 +18,17 @@ class TextController extends GetxController {
     // handlingData هتحدد نتيجة StatusRequest
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
-      // لو نجح ضيف كل البيانات اللي رجعت
-     data.addAll(response['data']);
+      if (response['status'] == "success") {
+        // لو نجح ضيف كل البيانات اللي رجعت
+        data.addAll(response['data']);
+      } else {
+        // لو مفيش بيانات  
+        statusRequest = StatusRequest.failure;
+      }
     }
     update();
   }
-
+// onInit مثل inistate
   @override
   void onInit() {
     getData();

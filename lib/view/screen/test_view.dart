@@ -1,5 +1,6 @@
 import 'package:e_commerce/controller/test_controller.dart';
-import 'package:e_commerce/core/class/statusrequest.dart';
+import 'package:e_commerce/core/class/handingdataview.dart';
+import 'package:e_commerce/core/constant/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,22 +13,18 @@ class TestView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Test"),
+        backgroundColor: AppColor.primaryColor,
       ),
       body: GetBuilder<TextController>(builder: (controller) {
-        if (controller.statusRequest == StatusRequest.loading) {
-          return const Center(child: Text("loading"));
-        } else if (controller.statusRequest == StatusRequest.offlinefailure) {
-          return const Center(child: Text("offline failure"));
-        } else if (controller.statusRequest == StatusRequest.serverfailure) {
-          return const Center(child: Text("server failure"));
-        } else {
-          return ListView.builder(
+        return HandingDataView(
+          statusRequest: controller.statusRequest,
+          widget: ListView.builder(
             itemCount: controller.data.length,
             itemBuilder: (context, index) {
               return Text("${controller.data}");
             },
-          );
-        }
+          ),
+        );
       }),
     );
   }
