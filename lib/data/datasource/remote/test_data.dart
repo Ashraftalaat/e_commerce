@@ -7,7 +7,10 @@ class TestData {
   TestData(this.crud);
 
   getData() async {
+   
+    //لاستقبال وعرض البيانات فقط
     var response = await crud.postdata(AppLinkApi.test, {});
-    return response.fold((l) => l, (r) => r);
+     //fold بترجع 2 parmeter l & r
+    return response.fold((l) => l , (r) => r);
   }
-}
+} 

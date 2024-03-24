@@ -1,6 +1,6 @@
 import 'package:e_commerce/core/constant/routs.dart';
 import 'package:e_commerce/core/middleware/mymiddleware.dart';
-import 'package:e_commerce/test.dart';
+
 import 'package:e_commerce/view/screen/auth/forgetpassword/forgetpassword.dart';
 import 'package:e_commerce/view/screen/auth/forgetpassword/resetpassword.dart';
 import 'package:e_commerce/view/screen/auth/forgetpassword/success_resetpassword.dart';
@@ -11,15 +11,16 @@ import 'package:e_commerce/view/screen/auth/forgetpassword/verifycode.dart';
 import 'package:e_commerce/view/screen/auth/verifycodesignup.dart';
 import 'package:e_commerce/view/screen/language.dart';
 import 'package:e_commerce/view/screen/onboarding.dart';
+import 'package:e_commerce/view/screen/test_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 List<GetPage<dynamic>>? routes = [
   // language
-  GetPage(name: "/", page: ()=> const Language(),middlewares: [
-    MyMiddleWare()
-  ]),
+  // GetPage(name: "/", page: ()=> const Language(),middlewares: [
+  //   MyMiddleWare()
+  // ]),
   
- //GetPage(name: "/", page: ()=> const Test()),
+ GetPage(name: "/", page: ()=> const TestView()),
 
   // OnBoarding
   GetPage(name: AppNamesRouts.onBoarding, page: ()=> const OnBoarding()),
