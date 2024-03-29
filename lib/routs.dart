@@ -15,17 +15,17 @@ import 'package:e_commerce/view/screen/test_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 List<GetPage<dynamic>>? routes = [
-  // language
-  // GetPage(name: "/", page: ()=> const Language(),middlewares: [
-  //   MyMiddleWare()
-  // ]),
+ //================ language ===============
+  GetPage(name: "/", page: ()=> const Language(),middlewares: [
+    MyMiddleWare()
+  ]),
   
- GetPage(name: "/", page: ()=> const TestView()),
+ //GetPage(name: "/", page: ()=> const TestView()),
 
-  // OnBoarding
+ //================= OnBoarding ===================
   GetPage(name: AppNamesRouts.onBoarding, page: ()=> const OnBoarding()),
 
-  // Auth
+ //================= Auth ==================
   GetPage(name: AppNamesRouts.login, page: ()=> const Login()),
   GetPage(name: AppNamesRouts.signUp, page: ()=> const SignUp()),
   GetPage(name: AppNamesRouts.forgetpassword, page: ()=> const ForgetPassword()),

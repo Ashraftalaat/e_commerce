@@ -1,4 +1,8 @@
+import 'package:e_commerce/core/class/statusrequest.dart';
 import 'package:e_commerce/core/constant/routs.dart';
+import 'package:e_commerce/core/function/handlingdata.dart';
+import 'package:e_commerce/data/datasource/remote/auth/signup_data.dart';
+import 'package:e_commerce/view/screen/auth/forgetpassword/verifycode.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -15,6 +19,11 @@ class SignUpControllerImp extends SignUpController {
   late TextEditingController email;
   late TextEditingController phone;
   late TextEditingController password;
+  StatusRequest? statusRequest;
+
+  SignUpData signupdata = SignUpData(Get.find());
+  // لتخزين الداتا اللي هتيجي من Backend
+  List data = [];
 
   @override
   gotoSignIn() {
@@ -22,16 +31,42 @@ class SignUpControllerImp extends SignUpController {
   }
 
   @override
-  signUp() {
+  signUp() async {
     var formdata = formstate.currentState;
     if (formdata!.validate()) {
-      Get.offNamed(AppNamesRouts.verifycodesignup);
+      // اولا التحميل بياخد وقت
+      statusRequest = StatusRequest.loading;
+      update();
+      //postData() الموجودة في مجلد data
+      var response = await signupdata.postData(
+          username.text, password.text, email.text, phone.text);
+      print("==================== controllr $response");
+      // handlingData هتحدد نتيجة StatusRequest
+      statusRequest = handlingData(response);
+      if (StatusRequest.success == statusRequest) {
+        if (response['status'] == "success") {
+          // لو نجح ضيف كل البيانات اللي رجعت
+          //لاكن ليس لدينا بيانات لاننا بنسجل حساب جديد فهنحذفها
+          // data.addAll(response['data']);
+          Get.offNamed(AppNamesRouts.verifycodesignup,arguments: {
+            "email":email.text
+          });
+        } else {
+          Get.defaultDialog(
+              title: "Warning",
+              middleText: "Phone Number Or Email already Exists ");
+          // لو مفيش بيانات
+          statusRequest = StatusRequest.failure;
+        }
+      }
+      update();
+
       //لحذف البيانات وهذا الكلاس من الميموري
       //عن طريق هذا الكود "وهذا في التحديث الجديد  فقط"
       //package GetX
-     // Get.delete<SignUpControllerImp>();
+      // Get.delete<SignUpControllerImp>();
       //يوجد طريقة اخري من خلال Get.LazyPut(()=> )
-    }
+    } else {}
   }
 
   @override

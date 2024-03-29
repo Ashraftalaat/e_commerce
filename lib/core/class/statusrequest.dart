@@ -8,6 +8,9 @@ enum StatusRequest {
   failure,
   // كتابة لينك خطأ
   serverfailure,
+  // خطأ بالكود
+  serverException,
   // لايوجد اتصال بالنت
   offlinefailure
+
 }
