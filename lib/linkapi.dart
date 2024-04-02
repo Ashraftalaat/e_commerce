@@ -12,8 +12,8 @@ class AppLinkApi {
   static const String test = "$server/test.php";
 
   //======================  Auth  ========================
-
   static const String signup = "$server/auth/signup.php";
+  static const String login = "$server/auth/login.php";
   static const String verfiycode = "$server/auth/verfiycode.php";
 
 }

@@ -2,17 +2,15 @@
 import 'package:e_commerce/core/class/crud.dart';
 import 'package:e_commerce/linkapi.dart';
 
-class SignUpData {
+class LoginData {
   Crud crud;
-  SignUpData(this.crud);
+  LoginData(this.crud);
 
-  postData(String username, String password, String email, String phone) async {
+  postData(String email, String password) async {
     //لاستقبال او اضافة  وعرض البيانات
-    var response = await crud.postdata(AppLinkApi.signup, {
-      "username": username,
-      "password": password,
+    var response = await crud.postdata(AppLinkApi.login, {
       "email": email,
-      "phone": phone,
+      "password": password,
     });
     //fold بترجع 2 parmeter l & r
     return response.fold((l) => l, (r) => r);

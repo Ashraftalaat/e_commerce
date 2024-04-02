@@ -12,4 +12,8 @@ class AppNamesRouts {
 
   //OnBoarding
   static const String onBoarding = "/onboarding";
+
+  //home
+  static const String home = "/home";
+
 }

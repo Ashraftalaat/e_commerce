@@ -9,6 +9,7 @@ import 'package:e_commerce/view/screen/auth/signup.dart';
 import 'package:e_commerce/view/screen/auth/success_signup.dart';
 import 'package:e_commerce/view/screen/auth/forgetpassword/verifycode.dart';
 import 'package:e_commerce/view/screen/auth/verifycodesignup.dart';
+import 'package:e_commerce/view/screen/home.dart';
 import 'package:e_commerce/view/screen/language.dart';
 import 'package:e_commerce/view/screen/onboarding.dart';
 import 'package:e_commerce/view/screen/test_view.dart';
@@ -34,6 +35,10 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppNamesRouts.successresetpassword, page: ()=> const SuccessResetPassword()),
   GetPage(name: AppNamesRouts.successsignup, page: ()=> const SuccessSignUp()),
   GetPage(name: AppNamesRouts.verifycodesignup, page: ()=> const VerifycodeSignUp()),
+
+  // home
+  GetPage(name: AppNamesRouts.home, page: ()=> const Home()),
+
 ];
 
 // // يفضل الروت خارج constant لسهولة التنقل بين الصفحات

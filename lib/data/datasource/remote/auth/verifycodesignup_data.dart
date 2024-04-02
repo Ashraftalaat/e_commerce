@@ -6,14 +6,13 @@ class VerifyCodeSignUpData {
   Crud crud;
   VerifyCodeSignUpData(this.crud);
 
-  postData(String email,String verifycode) async {
-   
-    //لاستقبال او اضافة  وعرض البيانات 
+  postData(String email, String verifycode) async {
+    //لاستقبال او اضافة  وعرض البيانات
     var response = await crud.postdata(AppLinkApi.verfiycode, {
-      "email" :  email,
-     "verfiycode" : verifycode ,
+      "email": email,
+      "verfiycode": verifycode,
     });
-     //fold بترجع 2 parmeter l & r
-    return response.fold((l) => l , (r) => r);
+    //fold بترجع 2 parmeter l & r
+    return response.fold((l) => l, (r) => r);
   }
-} 
+}

@@ -2,7 +2,6 @@ import 'package:e_commerce/core/class/statusrequest.dart';
 import 'package:e_commerce/core/constant/routs.dart';
 import 'package:e_commerce/core/function/handlingdata.dart';
 import 'package:e_commerce/data/datasource/remote/auth/signup_data.dart';
-import 'package:e_commerce/view/screen/auth/forgetpassword/verifycode.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -48,9 +47,8 @@ class SignUpControllerImp extends SignUpController {
           // لو نجح ضيف كل البيانات اللي رجعت
           //لاكن ليس لدينا بيانات لاننا بنسجل حساب جديد فهنحذفها
           // data.addAll(response['data']);
-          Get.offNamed(AppNamesRouts.verifycodesignup,arguments: {
-            "email":email.text
-          });
+          Get.offNamed(AppNamesRouts.verifycodesignup,
+              arguments: {"email": email.text});
         } else {
           Get.defaultDialog(
               title: "Warning",
