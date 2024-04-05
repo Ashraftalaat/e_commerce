@@ -1,5 +1,7 @@
 // enum لتحديد قيم محددة وثابتة
 enum StatusRequest {
+  //الهدف منها ازالة خطاء الnull التي تظهر مع handingdataRequest
+  none,
   // وقت التحميل
   loading,
   // النجاح وظهور الداتا

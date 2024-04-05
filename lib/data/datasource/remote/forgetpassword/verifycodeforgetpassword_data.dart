@@ -2,15 +2,15 @@
 import 'package:e_commerce/core/class/crud.dart';
 import 'package:e_commerce/linkapi.dart';
 
-class VerifyCodeSignUpData {
+class VerifyCodeForgetPasswordData {
   Crud crud;
-  VerifyCodeSignUpData(this.crud);
+  VerifyCodeForgetPasswordData(this.crud);
 
   postData(String email, String verifycode) async {
     //لاستقبال او اضافة  وعرض البيانات
-    var response = await crud.postdata(AppLinkApi.verfiycodesignup, {
+    var response = await crud.postdata(AppLinkApi.verifycodeforgetpassword, {
       "email": email,
-      "verfiycode": verifycode,
+      "verifycode": verifycode,
     });
     //fold بترجع 2 parmeter l & r
     return response.fold((l) => l, (r) => r);

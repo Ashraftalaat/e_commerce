@@ -3,7 +3,6 @@ import 'package:e_commerce/core/localization/changelocale.dart';
 import 'package:e_commerce/core/localization/translation.dart';
 import 'package:e_commerce/core/services/serviceslocal.dart';
 import 'package:e_commerce/routs.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,19 +20,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     LocaleController controller = Get.put(LocaleController());
     return GetMaterialApp(
-     
-      
       locale: controller.language,
       translations: MyTranslation(),
       debugShowCheckedModeBanner: false,
       //  title: 'Flutter Demo',
       theme: controller.appTheme,
-     //وضعناها في routes كقيمة افتراضية تظهر في اول البرنامج "/"
-     // home: const Language(),
-     // هنستخدم Getpage بدل منها لاننا نستخدم GetX
-     // routes: routes,
-     getPages: routes,
-       //تم حقن  binding في المشروع كله
+      //وضعناها في routes كقيمة افتراضية تظهر في اول البرنامج "/"
+      // home: const Language(),
+      // هنستخدم Getpage بدل منها لاننا نستخدم GetX
+      // routes: routes,
+      getPages: routes,
+      //تم حقن  binding في المشروع كله
       initialBinding: MyBinding(),
     );
   }

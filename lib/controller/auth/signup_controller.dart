@@ -18,7 +18,7 @@ class SignUpControllerImp extends SignUpController {
   late TextEditingController email;
   late TextEditingController phone;
   late TextEditingController password;
-  StatusRequest? statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
 
   SignUpData signupdata = SignUpData(Get.find());
   // لتخزين الداتا اللي هتيجي من Backend
