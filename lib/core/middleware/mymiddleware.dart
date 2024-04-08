@@ -14,7 +14,11 @@ class MyMiddleWare extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    if (myServices.sharedPreferences.getString("onBoarding") == "1") {
+    //هيدخل على الهوم غلي طول المخزنة بالشيرد
+    if (myServices.sharedPreferences.getString("step") == "2") {
+      return const RouteSettings(name: AppNamesRouts.home);
+    }
+    if (myServices.sharedPreferences.getString("step") == "1") {
       return const RouteSettings(name: AppNamesRouts.login);
     }
   }

@@ -18,8 +18,9 @@ class AppLinkApi {
 
   //======================  ForgetPassword  ========================
   static const String checkemail = "$server/forgetpassword/checkemail.php";
-  static const String resetpassword = "$server/forgetpassword/resetpassword.php";
+  static const String resetpassword =  "$server/forgetpassword/resetpassword.php";
   static const String verifycodeforgetpassword = "$server/forgetpassword/verifycode.php";
 
-
+  //======================  Home  ========================
+  static const String home = "$server/home.php";
 }

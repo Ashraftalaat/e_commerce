@@ -1,0 +1,56 @@
+import 'package:e_commerce/core/class/statusrequest.dart';
+import 'package:e_commerce/core/function/handlingdata.dart';
+import 'package:e_commerce/core/services/serviceslocal.dart';
+import 'package:e_commerce/data/datasource/remote/home_data.dart';
+import 'package:get/get.dart';
+
+abstract class HomeController extends GetxController {
+  initialData();
+  getdata();
+}
+
+class HomeControllerImp extends HomeController {
+  MyServices myServices = Get.find();
+  String? username;
+  String? id;
+
+  HomeData homeData = HomeData(Get.find());
+  // لتخزين الداتا اللي هتيجي من Backend
+//  List data = [];
+  List categories = [];
+  late StatusRequest statusRequest;
+
+  @override
+  initialData() {
+    username = myServices.sharedPreferences.getString("username");
+    id = myServices.sharedPreferences.getString("id");
+  }
+
+  @override
+  void onInit() {
+    getdata();
+    initialData();
+    super.onInit();
+  }
+
+  @override
+  getdata() async {
+    // اولا التحميل بياخد وقت
+    statusRequest = StatusRequest.loading;
+    //getData() الموجودة في مجلد data
+    var response = await homeData.getData();
+    print("==================== controllr $response");
+    // handlingData هتحدد نتيجة StatusRequest
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        // لو نجح ضيف كل البيانات اللي رجعت
+        categories.addAll(response['categories']);
+      } else {
+        // لو مفيش بيانات
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
+  }
+}
