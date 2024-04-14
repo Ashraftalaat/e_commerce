@@ -9,11 +9,13 @@ class AppNamesRouts {
   static const String successsignup = "/successsignup";
   static const String verifycodesignup = "/verifycodesignup";
 
-
   //OnBoarding
   static const String onBoarding = "/onboarding";
 
   //home
-  static const String home = "/home";
+  // static const String home = "/home";
+  static const String homescreen = "/homescreen";
 
+  // Items
+  static const String items = "/items";
 }

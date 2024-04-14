@@ -11,6 +11,15 @@ class AppLinkApi {
 
   static const String test = "$server/test.php";
 
+
+ //======================= Svg Image ==================
+  static const String imagestatic = "http://192.168.1.4/ecommerce/upload";
+  static const String imagestcategories = "$imagestatic/categories";
+  static const String imagestitems = "$imagestatic/items";
+
+
+ 
+
   //======================  Auth  ========================
   static const String signup = "$server/auth/signup.php";
   static const String login = "$server/auth/login.php";
@@ -23,4 +32,10 @@ class AppLinkApi {
 
   //======================  Home  ========================
   static const String home = "$server/home.php";
+
+  //======================  Items  ========================
+  static const String items =  "$server/items/items.php";
+  
+
+
 }

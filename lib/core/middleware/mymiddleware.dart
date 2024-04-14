@@ -16,7 +16,7 @@ class MyMiddleWare extends GetMiddleware {
   RouteSettings? redirect(String? route) {
     //هيدخل على الهوم غلي طول المخزنة بالشيرد
     if (myServices.sharedPreferences.getString("step") == "2") {
-      return const RouteSettings(name: AppNamesRouts.home);
+      return const RouteSettings(name: AppNamesRouts.homescreen);
     }
     if (myServices.sharedPreferences.getString("step") == "1") {
       return const RouteSettings(name: AppNamesRouts.login);

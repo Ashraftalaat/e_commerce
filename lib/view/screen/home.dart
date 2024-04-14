@@ -1,5 +1,10 @@
 import 'package:e_commerce/controller/home_controller.dart';
-import 'package:e_commerce/core/constant/color.dart';
+import 'package:e_commerce/core/class/handingdataview.dart';
+import 'package:e_commerce/view/widget/customappbar.dart';
+import 'package:e_commerce/view/widget/home/customcardhome.dart';
+import 'package:e_commerce/view/widget/home/customtitlehome.dart';
+import 'package:e_commerce/view/widget/home/listcategorieshome.dart';
+import 'package:e_commerce/view/widget/home/listitemshome.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,92 +15,33 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeControllerImp controller = Get.put(HomeControllerImp());
-    return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: ListView(
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 40),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          fillColor: Colors.grey[200],
-                          filled: true,
-                          hintText: "Find Product",
-                          hintStyle:
-                              TextStyle(color: Colors.grey[500], fontSize: 18),
-                          prefixIcon: const Icon(
-                            Icons.search,
-                            size: 30,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 40),
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    height: 65,
-                    decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(15)),
-                    child: const Icon(
-                      Icons.notifications_active_outlined,
-                      size: 40,
-                    ),
-                  )
-                ],
+    Get.put(HomeControllerImp());
+    return GetBuilder<HomeControllerImp>(
+      builder: (controller) => HandingDataView(
+        statusRequest: controller.statusRequest,
+        widget: Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 15,
+          ),
+          child: ListView(
+            children: [
+              CustomAppBar(
+                titleAppBar: "Find Product",
+                onPressedIcon: () {},
+                onPressedSearch: () {},
               ),
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 15),
-              child: Stack(
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    height: 160,
-                    decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(20)),
-                    child: const ListTile(
-                      title: Text(
-                        "Asummer Surprise",
-                        style: TextStyle(fontSize: 20, color: Colors.white),
-                      ),
-                      subtitle: Text(
-                        "Cashback  20%",
-                        style: TextStyle(color: Colors.white, fontSize: 30),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: -20,
-                    right: -20,
-                    child: Container(
-                      height: 160,
-                      width: 160,
-                      decoration: BoxDecoration(
-                          color: AppColor.secondColor,
-                          borderRadius: BorderRadius.circular(160)),
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
+              const CustomCardHome(
+                  title: "A summer Surprise", body: "Cashback  20%"),
+              const CustomTitleHome(title: "Categories :"),
+              const ListCategories(),
+              const CustomTitleHome(title: "Product for you :"),
+              const ListItemsHome(),
+              const CustomTitleHome(title: "Offer :"),
+              const ListItemsHome(),
+              const CustomTitleHome(title: "Offer :"),
+              const ListItemsHome(),
+            ],
+          ),
         ),
       ),
     );
