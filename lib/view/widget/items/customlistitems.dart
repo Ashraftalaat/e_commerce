@@ -1,18 +1,26 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce/controller/items_controller.dart';
 import 'package:e_commerce/core/constant/color.dart';
 import 'package:e_commerce/core/function/translatedatabase.dart';
 import 'package:e_commerce/data/model/items.dart';
 import 'package:e_commerce/linkapi.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
-class CustomListItems extends StatelessWidget {
+class CustomListItems extends GetView<ItemsControllerImp> {
   final Itemsmodel itemsmodel;
-  const CustomListItems({super.key, required this.itemsmodel});
+  const CustomListItems({
+    super.key,
+    required this.itemsmodel,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        controller.gotoPageItemsDetails(itemsmodel);
+      },
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -20,10 +28,13 @@ class CustomListItems extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CachedNetworkImage(
-                imageUrl: "${AppLinkApi.imagestitems}/${itemsmodel.itemsImage}",
-                height: 100,
-                fit: BoxFit.fill,
+              Hero(
+                tag:" ${itemsmodel.itemsImage}",
+                child: CachedNetworkImage(
+                  imageUrl: "${AppLinkApi.imagestitems}/${itemsmodel.itemsImage}",
+                  height: 100,
+                  fit: BoxFit.fill,
+                ),
               ),
               const SizedBox(
                 height: 10,
@@ -65,7 +76,7 @@ class CustomListItems extends StatelessWidget {
                   ),
                 ],
               ),
-             const  SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(

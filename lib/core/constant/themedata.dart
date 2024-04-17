@@ -68,6 +68,6 @@ ThemeData themeArabic = ThemeData(
       color: AppColor.backgroundcolor,
       fontSize: 14,
       height: 2,
-    )
+    ),
   ),
 );

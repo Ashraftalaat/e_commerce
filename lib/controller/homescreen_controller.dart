@@ -14,7 +14,9 @@ class HomeScreenControllerImp extends HomeScreenController {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(
-          child: Text("setting"),
+          child: Text(
+            "setting",
+          ),
         )
       ],
     ),
@@ -23,7 +25,7 @@ class HomeScreenControllerImp extends HomeScreenController {
       children: [
         Center(
           child: Text("profile"),
-        )
+        ),
       ],
     ),
     const Column(

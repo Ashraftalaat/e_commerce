@@ -37,6 +37,7 @@ class ItemsHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      
       children: [
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
@@ -45,9 +46,10 @@ class ItemsHome extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
+
         Container(
           height: 150,
-          width: 220,
+          width: 200,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: AppColor.grey.withOpacity(0.5)),

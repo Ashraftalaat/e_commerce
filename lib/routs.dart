@@ -10,6 +10,7 @@ import 'package:e_commerce/view/screen/auth/success_signup.dart';
 import 'package:e_commerce/view/screen/auth/verifycodesignup.dart';
 import 'package:e_commerce/view/screen/homescreen.dart';
 import 'package:e_commerce/view/screen/items.dart';
+import 'package:e_commerce/view/screen/itemsdetails.dart';
 import 'package:e_commerce/view/screen/language.dart';
 import 'package:e_commerce/view/screen/onboarding.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -48,6 +49,8 @@ List<GetPage<dynamic>>? routes = [
 
   // items
   GetPage(name: AppNamesRouts.items, page: () => const Items()),
+  GetPage(name: AppNamesRouts.itemsdetails, page: () => const ItemsDetails()),
+
 ];
 
 // // يفضل الروت خارج constant لسهولة التنقل بين الصفحات

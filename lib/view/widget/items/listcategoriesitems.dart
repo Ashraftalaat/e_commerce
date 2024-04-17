@@ -20,6 +20,7 @@ class ListCategoriesItems extends GetView<ItemsControllerImp> {
           itemBuilder: (context, index) {
             return Categories(
               i: index,
+              
               categoriesmodel: Categoriesmodel.fromJson(
                 controller.categories[index],
               ),

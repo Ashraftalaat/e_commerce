@@ -1,5 +1,4 @@
 import 'package:e_commerce/controller/homescreen_controller.dart';
-
 import 'package:e_commerce/view/widget/homescreen/custombuttonappbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,7 +10,7 @@ class CustomBottomAppBarHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeScreenControllerImp>(
         builder: ((controller) => BottomAppBar(
-          
+        //  height: 100,
               shape: const CircularNotchedRectangle(),
               notchMargin: 10,
               child: Row(
@@ -31,7 +30,7 @@ class CustomBottomAppBarHome extends StatelessWidget {
                             active: controller.currentpage == i ? true : false);
                   }),
 
-        //=================== تم استبالهم بال ...List.generate =====================
+                  //=================== تم استبالهم بال ...List.generate =====================
 
                   // Row(
                   //   children: [
