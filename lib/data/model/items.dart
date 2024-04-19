@@ -16,25 +16,28 @@ class Itemsmodel {
   String? categoriesNameAr;
   String? categoriesImage;
   String? categoriesDatetime;
+  String? favorite;
 
-  Itemsmodel(
-      {this.itemsId,
-      this.itemsName,
-      this.itemsNameAr,
-      this.itemsDesc,
-      this.itemsDescAr,
-      this.itemsImage,
-      this.itemsCount,
-      this.itemsActive,
-      this.itemsPrice,
-      this.itemsDiscount,
-      this.itemsDate,
-      this.itemsCat,
-      this.categoriesId,
-      this.categoriesName,
-      this.categoriesNameAr,
-      this.categoriesImage,
-      this.categoriesDatetime});
+  Itemsmodel({
+    this.itemsId,
+    this.itemsName,
+    this.itemsNameAr,
+    this.itemsDesc,
+    this.itemsDescAr,
+    this.itemsImage,
+    this.itemsCount,
+    this.itemsActive,
+    this.itemsPrice,
+    this.itemsDiscount,
+    this.itemsDate,
+    this.itemsCat,
+    this.categoriesId,
+    this.categoriesName,
+    this.categoriesNameAr,
+    this.categoriesImage,
+    this.categoriesDatetime,
+    this.favorite,
+  });
 
   Itemsmodel.fromJson(Map<String, dynamic> json) {
     itemsId = json['items_id'];
@@ -54,6 +57,8 @@ class Itemsmodel {
     categoriesNameAr = json['categories_name_ar'];
     categoriesImage = json['categories_image'];
     categoriesDatetime = json['categories_datetime'];
+    // تم اضافة?.toString() مع favorite يدويا
+    favorite = json['favorite']?.toString();
   }
 
   Map<String, dynamic> toJson() {

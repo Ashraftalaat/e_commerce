@@ -1,3 +1,4 @@
+import 'package:e_commerce/controller/favorite_controller.dart';
 import 'package:e_commerce/controller/items_controller.dart';
 import 'package:e_commerce/core/class/handingdataview.dart';
 import 'package:e_commerce/data/model/items.dart';
@@ -13,6 +14,7 @@ class Items extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(ItemsControllerImp());
+    FavoriteController controllerFav = Get.put(FavoriteController());
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(15),
@@ -37,8 +39,14 @@ class Items extends StatelessWidget {
                     childAspectRatio: 0.6,
                   ),
                   itemBuilder: (BuildContext context, index) {
+                    // ملينا المتغير isFavorite اللي من نوع Map
+                    // بكل items = favorite 1 or 0
+                    // عشان يظهر كل items في الصفحة
+                    controllerFav
+                            .isFavorite[controller.data[index]['items_id']] =
+                        controller.data[index]['favorite'].toString();
                     return CustomListItems(
-                        itemsmodel: 
+                        itemsmodel:
                             Itemsmodel.fromJson(controller.data[index]));
                   },
                 ),

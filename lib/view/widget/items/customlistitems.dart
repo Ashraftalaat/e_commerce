@@ -1,18 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce/controller/favorite_controller.dart';
 import 'package:e_commerce/controller/items_controller.dart';
 import 'package:e_commerce/core/constant/color.dart';
 import 'package:e_commerce/core/function/translatedatabase.dart';
 import 'package:e_commerce/data/model/items.dart';
 import 'package:e_commerce/linkapi.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class CustomListItems extends GetView<ItemsControllerImp> {
   final Itemsmodel itemsmodel;
+  // final bool active;
   const CustomListItems({
     super.key,
     required this.itemsmodel,
+    //   required this.active,
   });
 
   @override
@@ -29,9 +31,10 @@ class CustomListItems extends GetView<ItemsControllerImp> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Hero(
-                tag:" ${itemsmodel.itemsImage}",
+                tag: " ${itemsmodel.itemsImage}",
                 child: CachedNetworkImage(
-                  imageUrl: "${AppLinkApi.imagestitems}/${itemsmodel.itemsImage}",
+                  imageUrl:
+                      "${AppLinkApi.imagestitems}/${itemsmodel.itemsImage}",
                   height: 100,
                   fit: BoxFit.fill,
                 ),
@@ -88,12 +91,23 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                           fontWeight: FontWeight.bold,
                           color: AppColor.secondColor,
                           fontFamily: "sans")),
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.favorite,
+                  GetBuilder<FavoriteController>(
+                    builder: (controller) => IconButton(
+                      onPressed: () {
+                        if (controller.isFavorite[itemsmodel.itemsId] == "1") {
+                          controller.setFavorite(itemsmodel.itemsId, "0");
+                        } else {
+                          controller.setFavorite(itemsmodel.itemsId, "1");
+                        }
+                      },
+                      icon: Icon(
+                        controller.isFavorite[itemsmodel.itemsId] == "1"
+                            ? Icons.favorite
+                            : Icons.favorite_border_outlined,
                         color: AppColor.secondColor,
-                      ))
+                      ),
+                    ),
+                  )
                 ],
               )
             ],
