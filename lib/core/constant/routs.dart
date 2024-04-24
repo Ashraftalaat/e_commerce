@@ -20,5 +20,7 @@ class AppNamesRouts {
   static const String items = "/items";
   static const String itemsdetails = "/itemsdetails";
   
+  // favorite
+  static const String myfavorite = "/myfavorite";
 
 }

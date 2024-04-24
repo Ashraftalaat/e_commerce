@@ -1,5 +1,6 @@
 import 'package:e_commerce/controller/home_controller.dart';
 import 'package:e_commerce/core/class/handingdataview.dart';
+import 'package:e_commerce/core/constant/routs.dart';
 import 'package:e_commerce/view/widget/customappbar.dart';
 import 'package:e_commerce/view/widget/home/customcardhome.dart';
 import 'package:e_commerce/view/widget/home/customtitlehome.dart';
@@ -29,6 +30,9 @@ class Home extends StatelessWidget {
                 titleAppBar: "Find Product",
                 onPressedIcon: () {},
                 onPressedSearch: () {},
+                onPressedIconFav: () {
+                  Get.toNamed(AppNamesRouts.myfavorite);
+                },
               ),
               const CustomCardHome(
                   title: "A summer Surprise", body: "Cashback  20%"),

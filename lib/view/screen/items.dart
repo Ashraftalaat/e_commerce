@@ -1,6 +1,7 @@
-import 'package:e_commerce/controller/favorite_controller.dart';
+import 'package:e_commerce/controller/favorite/favorite_controller.dart';
 import 'package:e_commerce/controller/items_controller.dart';
 import 'package:e_commerce/core/class/handingdataview.dart';
+import 'package:e_commerce/core/constant/routs.dart';
 import 'package:e_commerce/data/model/items.dart';
 import 'package:e_commerce/view/widget/customappbar.dart';
 import 'package:e_commerce/view/widget/items/customlistitems.dart';
@@ -24,6 +25,9 @@ class Items extends StatelessWidget {
               titleAppBar: "Find Product",
               onPressedIcon: () {},
               onPressedSearch: () {},
+              onPressedIconFav: (){
+                Get.toNamed(AppNamesRouts.myfavorite);
+              },
             ),
             const ListCategoriesItems(),
             GetBuilder<ItemsControllerImp>(
@@ -45,9 +49,12 @@ class Items extends StatelessWidget {
                     controllerFav
                             .isFavorite[controller.data[index]['items_id']] =
                         controller.data[index]['favorite'].toString();
+
                     return CustomListItems(
-                        itemsmodel:
-                            Itemsmodel.fromJson(controller.data[index]));
+                      itemsmodel: Itemsmodel.fromJson(
+                        controller.data[index],
+                      ),
+                    );
                   },
                 ),
               ),

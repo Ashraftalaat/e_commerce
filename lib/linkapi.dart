@@ -11,14 +11,10 @@ class AppLinkApi {
 
   static const String test = "$server/test.php";
 
-
- //======================= Svg Image ==================
+  //======================= Svg Image ==================
   static const String imagestatic = "http://192.168.1.4/ecommerce/upload";
   static const String imagestcategories = "$imagestatic/categories";
   static const String imagestitems = "$imagestatic/items";
-
-
- 
 
   //======================  Auth  ========================
   static const String signup = "$server/auth/signup.php";
@@ -27,15 +23,20 @@ class AppLinkApi {
 
   //======================  ForgetPassword  ========================
   static const String checkemail = "$server/forgetpassword/checkemail.php";
-  static const String resetpassword =  "$server/forgetpassword/resetpassword.php";
-  static const String verifycodeforgetpassword = "$server/forgetpassword/verifycode.php";
+  static const String resetpassword =
+      "$server/forgetpassword/resetpassword.php";
+  static const String verifycodeforgetpassword =
+      "$server/forgetpassword/verifycode.php";
 
   //======================  Home  ========================
   static const String home = "$server/home.php";
 
   //======================  Items  ========================
-  static const String items =  "$server/items/items.php";
-  
+  static const String items = "$server/items/items.php";
 
-
+  //======================  favorite  ========================
+  static const String addfavorite = "$server/favorite/add.php";
+  static const String removefavorite = "$server/favorite/remove.php";
+  static const String myfavoriteview = "$server/favorite/view.php";
+  static const String deletefromfav = "$server/favorite/deletefromfavorite.php";
 }

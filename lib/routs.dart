@@ -12,6 +12,7 @@ import 'package:e_commerce/view/screen/homescreen.dart';
 import 'package:e_commerce/view/screen/items.dart';
 import 'package:e_commerce/view/screen/itemsdetails.dart';
 import 'package:e_commerce/view/screen/language.dart';
+import 'package:e_commerce/view/screen/myfavorite.dart';
 import 'package:e_commerce/view/screen/onboarding.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
@@ -51,6 +52,8 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppNamesRouts.items, page: () => const Items()),
   GetPage(name: AppNamesRouts.itemsdetails, page: () => const ItemsDetails()),
 
+  // favorite
+  GetPage(name: AppNamesRouts.myfavorite, page: () => const MyFavorite()),
 ];
 
 // // يفضل الروت خارج constant لسهولة التنقل بين الصفحات
