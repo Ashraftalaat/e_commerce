@@ -3,6 +3,7 @@ import 'package:e_commerce/core/constant/routs.dart';
 import 'package:e_commerce/core/function/handlingdata.dart';
 import 'package:e_commerce/core/services/serviceslocal.dart';
 import 'package:e_commerce/data/datasource/remote/home_data.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class HomeController extends GetxController {
@@ -25,6 +26,22 @@ class HomeControllerImp extends HomeController {
 
   late StatusRequest statusRequest;
 
+  late TextEditingController search;
+
+  bool isSearch = false;
+
+  checkSearch(val) {
+    if (val == "") {
+      isSearch = false;
+      update();
+    }
+  }
+
+  onSearchItems() {
+    isSearch = true;
+    update();
+  }
+
   @override
   initialData() {
     lang = myServices.sharedPreferences.getString("lang");
@@ -34,6 +51,7 @@ class HomeControllerImp extends HomeController {
 
   @override
   void onInit() {
+    search = TextEditingController();
     getdata();
     initialData();
     super.onInit();
@@ -51,8 +69,8 @@ class HomeControllerImp extends HomeController {
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
         // لو نجح ضيف كل البيانات اللي رجعت
-        categories.addAll(response['categories']);
-        items.addAll(response['items']);
+        categories.addAll(response['categories']['data']);
+        items.addAll(response['items']['data']);
       } else {
         // لو مفيش بيانات
         statusRequest = StatusRequest.failure;

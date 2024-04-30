@@ -15,4 +15,12 @@ class VerifyCodeSignUpData {
     //fold بترجع 2 parmeter l & r
     return response.fold((l) => l, (r) => r);
   }
+
+  reSendData(String email) async {
+    var response = await crud.postdata(AppLinkApi.resend, {
+      "email": email,
+    });
+    //fold بترجع 2 parmeter l & r
+    return response.fold((l) => l, (r) => r);
+  }
 }

@@ -21,14 +21,14 @@ class Items extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         child: ListView(
           children: [
-            CustomAppBar(
-              titleAppBar: "Find Product",
-              onPressedIcon: () {},
-              onPressedSearch: () {},
-              onPressedIconFav: (){
-                Get.toNamed(AppNamesRouts.myfavorite);
-              },
-            ),
+            // CustomAppBar(
+            //   titleAppBar: "Find Product",
+            //  // onPressedIcon: () {},
+            //   onPressedSearch: () {},
+            //   onPressedIconFav: (){
+            //     Get.toNamed(AppNamesRouts.myfavorite);
+            //   },
+            // ),
             const ListCategoriesItems(),
             GetBuilder<ItemsControllerImp>(
               builder: (controller) => HandingDataView(

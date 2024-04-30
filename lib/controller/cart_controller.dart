@@ -1,43 +1,24 @@
-
 import 'package:e_commerce/core/class/statusrequest.dart';
 import 'package:e_commerce/core/function/handlingdata.dart';
 import 'package:e_commerce/core/services/serviceslocal.dart';
 import 'package:e_commerce/data/datasource/remote/cart_data.dart';
 import 'package:e_commerce/data/model/cart.dart';
-import 'package:e_commerce/data/model/items.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-abstract class ItemsDetailsController extends GetxController {
-  initialData();
-}
+class CartController extends GetxController {
+  MyServices myServices = Get.find();
+  CartData cartData = CartData(Get.find());
 
-class ItemsDetailsControllerImp extends ItemsDetailsController {
-   CartData cartData = CartData(Get.find());
-   MyServices myServices = Get.find();
-
-   double priceOrder = 0.0;
-  int totalcountitems = 0;
+  late StatusRequest statusRequest;
 
   List<CartModel> data = [];
+  double priceOrder = 0.0;
+  int totalcountitems = 0;
 
-  late Itemsmodel itemsmodel;
   int countitems = 0;
-  late StatusRequest statusRequest;
- // CartController cartController = Get.put(CartController());
-  List subItems = [
-    {"name": "Red", "id": 1, "active": "0"},
-    {"name": "Yellow", "id": 2, "active": "0"},
-    {"name": "Blue", "id": 3, "active": "1"},
-  ];
 
-  @override
-  void onInit() {
-    initialData();
-    super.onInit();
-  }
-
-addItems(String itemsid) async {
+  add(String itemsid) async {
     // اولا التحميل بياخد وقت
     statusRequest = StatusRequest.loading;
     update();
@@ -62,7 +43,7 @@ addItems(String itemsid) async {
      update();
   }
 
-   deleteItems(String itemsid) async {
+  delete(String itemsid) async {
     // اولا التحميل بياخد وقت
     statusRequest = StatusRequest.loading;
     update();
@@ -87,6 +68,40 @@ addItems(String itemsid) async {
     update();
   }
 
+
+
+  view() async {
+    // اولا التحميل بياخد وقت
+    statusRequest = StatusRequest.loading;
+    //getData() الموجودة في مجلد data
+    update();
+    var response =
+        await cartData.viewCart(myServices.sharedPreferences.getString("id")!);
+    print("==================== controllr $response");
+    // handlingData هتحدد نتيجة StatusRequest
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        if (response['datacart']['status'] == 'success') {
+          List dataresponse = response['datacart']['data'];
+          Map dataresponsecountprice = response['countprice'];
+          data.clear();
+          data.addAll(dataresponse.map((e) => CartModel.fromJson(e)));
+          totalcountitems =
+              int.parse(dataresponsecountprice['totalitems'].toString());
+          priceOrder =
+              double.parse(dataresponsecountprice['totalprice'].toString());
+
+          //  data.addAll(response['data']);
+        }
+      } else {
+        // لو مفيش بيانات
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
+  }
+
   resetVarCart() {
     priceOrder = 0.0;
     totalcountitems = 0;
@@ -95,57 +110,12 @@ addItems(String itemsid) async {
 
   refreshPage() {
     resetVarCart();
-    
-  }
-
-// سوف نضعه في onitial لاكن الموجود في ItemsDetailsControllerImp
-  getCountItems(String itemsid) async {
-    // اولا التحميل بياخد وقت
-    statusRequest = StatusRequest.loading;
-    //getData() الموجودة في مجلد data
-    var response = await cartData.getCountCart(
-        myServices.sharedPreferences.getString("id")!, itemsid);
-    print("==================== controllr $response");
-    // handlingData هتحدد نتيجة StatusRequest
-    statusRequest = handlingData(response);
-    if (StatusRequest.success == statusRequest) {
-      if (response['status'] == "success") {
-        countitems = int.parse(response['data'].toString());
-        response['data'];
-        print("=========================");
-        print("${countitems}");
-        return countitems;
-        //  data.addAll(response['data']);
-      } else {
-        // لو مفيش بيانات
-        statusRequest = StatusRequest.failure;
-      }
-    }
-    // مش محتاجين عمل ريفريش هنا
-    // update();
+    view();
   }
 
   @override
-  initialData() async {
-    statusRequest = StatusRequest.loading;
-    itemsmodel = Get.arguments["itemsmodel"];
-    countitems =
-        await getCountItems(itemsmodel.itemsId.toString());
-    statusRequest = StatusRequest.success;
-    update();
-  }
-
-  add() {
-    addItems(itemsmodel.itemsId.toString());
-    countitems++;
-    update();
-  }
-
-  delete() {
-    deleteItems(itemsmodel.itemsId.toString());
-    if (countitems > 0) {
-      countitems--;
-      update();
-    }
+  void onInit() {
+    view();
+    super.onInit();
   }
 }

@@ -27,7 +27,7 @@ class CustomButtonAppBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(iconData,
-              color: active == true ? AppColor.fourdColor : AppColor.grey2),
+              color: active == true ? AppColor.fourdColor : AppColor.grey2,size: 30,),
           Text(
             textButton,
             style: TextStyle(

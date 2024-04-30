@@ -10,7 +10,7 @@ class CustomBottomAppBarHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeScreenControllerImp>(
         builder: ((controller) => BottomAppBar(
-        //  height: 100,
+              //  height: 100,
               shape: const CircularNotchedRectangle(),
               notchMargin: 10,
               child: Row(
@@ -24,9 +24,9 @@ class CustomBottomAppBarHome extends StatelessWidget {
                               controller.changePage(i);
                             },
                             //عملناه لست ليها
-                            textButton: controller.titleBottonAppBar[i],
+                            textButton: controller.bottonAppBar[i]['title'],
                             //عملناه لست ليها
-                            iconData: controller.icondata[i],
+                            iconData: controller.bottonAppBar[i]['icon'],
                             active: controller.currentpage == i ? true : false);
                   }),
 

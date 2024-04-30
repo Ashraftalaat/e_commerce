@@ -13,10 +13,12 @@ class ListItemsHome extends GetView<HomeControllerImp> {
   @override
   Widget build(BuildContext context) {
     return Container(
+     
       margin: const EdgeInsets.only(top: 10),
       height: 130,
-      width: 100,
+     // width: 100,
       child: ListView.builder(
+      
           scrollDirection: Axis.horizontal,
           itemCount: controller.items.length,
           itemBuilder: (context, index) {

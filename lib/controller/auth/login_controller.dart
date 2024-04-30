@@ -51,16 +51,20 @@ class LoginControllerImp extends LoginController {
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
-          myServices.sharedPreferences
-              .setString("id", response['data']['users_id'].toString());
-          myServices.sharedPreferences
-              .setString("username", response['data']['users_name'].toString());
-          myServices.sharedPreferences
-              .setString("email", response['data']['users_email'].toString());
-          myServices.sharedPreferences
-              .setString("phone", response['data']['users_phone'].toString());
-          myServices.sharedPreferences.setString("step", "2");
-          Get.offNamed(AppNamesRouts.homescreen);
+          if (response['data']['users_approve'] == 1) {
+            myServices.sharedPreferences
+                .setString("id", response['data']['users_id'].toString());
+            myServices.sharedPreferences.setString(
+                "username", response['data']['users_name'].toString());
+            myServices.sharedPreferences
+                .setString("email", response['data']['users_email'].toString());
+            myServices.sharedPreferences
+                .setString("phone", response['data']['users_phone'].toString());
+            myServices.sharedPreferences.setString("step", "2");
+            Get.offNamed(AppNamesRouts.homescreen);
+          } else {
+            Get.toNamed(AppNamesRouts.verifycodesignup,arguments: {"email": email.text});
+          }
         } else {
           Get.defaultDialog(
               title: "Warning", middleText: "Password Or Email Not Correct");

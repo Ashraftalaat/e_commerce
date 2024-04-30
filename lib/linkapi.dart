@@ -20,6 +20,7 @@ class AppLinkApi {
   static const String signup = "$server/auth/signup.php";
   static const String login = "$server/auth/login.php";
   static const String verfiycodesignup = "$server/auth/verfiycode.php";
+  static const String resend = "$server/auth/resend.php";
 
   //======================  ForgetPassword  ========================
   static const String checkemail = "$server/forgetpassword/checkemail.php";
@@ -33,10 +34,19 @@ class AppLinkApi {
 
   //======================  Items  ========================
   static const String items = "$server/items/items.php";
+  static const String searchitems = "$server/items/search.php";
 
   //======================  favorite  ========================
   static const String addfavorite = "$server/favorite/add.php";
   static const String removefavorite = "$server/favorite/remove.php";
   static const String myfavoriteview = "$server/favorite/view.php";
   static const String deletefromfav = "$server/favorite/deletefromfavorite.php";
+
+  //======================  Cart  ========================
+  static const String addcart = "$server/cart/add.php";
+  static const String deletecart = "$server/cart/delete.php";
+  static const String cartview = "$server/cart/view.php";
+  static const String cartgetcountitems = "$server/cart/getcountitems.php";
+
+  //======================  search  ========================
 }

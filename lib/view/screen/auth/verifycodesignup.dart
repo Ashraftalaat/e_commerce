@@ -38,9 +38,9 @@ class VerifycodeSignUp extends StatelessWidget {
                 const SizedBox(height: 40),
                 const CustomTextTitleAuth(texttitle: "Check Code"),
                 const SizedBox(height: 30),
-                const CustomTextBodyAuth(
+                CustomTextBodyAuth(
                     textbody:
-                        "Please Enter The Digit Code Sent To atslook@gmail.com"),
+                        "Please Enter The Digit Code Sent To ${controller.email}"),
                 const SizedBox(height: 45),
                 OtpTextField(
                   fieldWidth: 50,
@@ -58,6 +58,23 @@ class VerifycodeSignUp extends StatelessWidget {
                     controller.gotoSuccessSignUp(verificationCode);
                   }, // end onSubmit
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
+                InkWell(
+                  onTap: () {
+                    controller.reSend();
+                  },
+                  child: const Center(
+                    child: Text(
+                      "ReSend",
+                      style: TextStyle(
+                          color: AppColor.primaryColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                )
               ],
             ),
           ),

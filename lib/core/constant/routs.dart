@@ -19,8 +19,9 @@ class AppNamesRouts {
   // Items
   static const String items = "/items";
   static const String itemsdetails = "/itemsdetails";
-  
+
   // favorite
   static const String myfavorite = "/myfavorite";
 
+  static const String cart = "/cart";
 }

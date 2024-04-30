@@ -1,5 +1,6 @@
 import 'package:e_commerce/controller/homescreen_controller.dart';
 import 'package:e_commerce/core/constant/color.dart';
+import 'package:e_commerce/core/constant/routs.dart';
 import 'package:e_commerce/view/widget/homescreen/custombottomappbarhome.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,8 +16,10 @@ class HomeScreen extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
             // لجعلها دائرية
             shape: const CircleBorder(),
-            backgroundColor:AppColor.fourdColor,
-            onPressed: () {},
+            backgroundColor: AppColor.fourdColor,
+            onPressed: () {
+              Get.toNamed(AppNamesRouts.cart);
+            },
             child: const Icon(Icons.shopping_basket_outlined),
           ),
           floatingActionButtonLocation:

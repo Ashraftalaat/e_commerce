@@ -27,23 +27,34 @@ class Home extends StatelessWidget {
           child: ListView(
             children: [
               CustomAppBar(
+                myController: controller.search,
                 titleAppBar: "Find Product",
-                onPressedIcon: () {},
-                onPressedSearch: () {},
+                //  onPressedIcon: () {},
+                onPressedSearch: () {
+                  controller.onSearchItems();
+                },
                 onPressedIconFav: () {
                   Get.toNamed(AppNamesRouts.myfavorite);
                 },
+                onChanged: (val) {
+                  controller.checkSearch(val);
+                },
               ),
-              const CustomCardHome(
-                  title: "A summer Surprise", body: "Cashback  20%"),
-              const CustomTitleHome(title: "Categories :"),
-              const ListCategories(),
-              const CustomTitleHome(title: "Product for you :"),
-              const ListItemsHome(),
-              const CustomTitleHome(title: "Offer :"),
-              const ListItemsHome(),
-              const CustomTitleHome(title: "Offer :"),
-              const ListItemsHome(),
+              !controller.isSearch
+                  ? const Column(
+                      children: [
+                        CustomCardHome(
+                            title: "A summer Surprise", body: "Cashback  20%"),
+                        CustomTitleHome(title: "Categories :"),
+                        ListCategories(),
+                        CustomTitleHome(title: "Product for you :"),
+                        ListItemsHome(),
+                        
+                      ],
+                    )
+                  : Container(
+                      child: const Text("Search"),
+                    )
             ],
           ),
         ),

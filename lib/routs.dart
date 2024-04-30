@@ -8,6 +8,7 @@ import 'package:e_commerce/view/screen/auth/login.dart';
 import 'package:e_commerce/view/screen/auth/signup.dart';
 import 'package:e_commerce/view/screen/auth/success_signup.dart';
 import 'package:e_commerce/view/screen/auth/verifycodesignup.dart';
+import 'package:e_commerce/view/screen/cart.dart';
 import 'package:e_commerce/view/screen/homescreen.dart';
 import 'package:e_commerce/view/screen/items.dart';
 import 'package:e_commerce/view/screen/itemsdetails.dart';
@@ -23,8 +24,6 @@ List<GetPage<dynamic>>? routes = [
     page: () => const Language(),
     middlewares: [MyMiddleWare()],
   ),
-
-  //GetPage(name: "/", page: ()=> const TestView()),
 
   //================= OnBoarding ===================
   GetPage(name: AppNamesRouts.onBoarding, page: () => const OnBoarding()),
@@ -54,6 +53,9 @@ List<GetPage<dynamic>>? routes = [
 
   // favorite
   GetPage(name: AppNamesRouts.myfavorite, page: () => const MyFavorite()),
+
+ // Cart
+  GetPage(name: AppNamesRouts.cart, page: () => const Cart()),
 ];
 
 // // يفضل الروت خارج constant لسهولة التنقل بين الصفحات

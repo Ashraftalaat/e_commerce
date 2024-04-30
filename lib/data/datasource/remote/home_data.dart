@@ -12,4 +12,12 @@ class HomeData {
     //fold بترجع 2 parmeter l & r
     return response.fold((l) => l, (r) => r);
   }
+
+  searchData(String search) async {
+    //لاستقبال وعرض البيانات فقط
+    var response =
+        await crud.postdata(AppLinkApi.searchitems, {'search': search});
+    //fold بترجع 2 parmeter l & r
+    return response.fold((l) => l, (r) => r);
+  }
 }
