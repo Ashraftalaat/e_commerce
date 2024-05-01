@@ -13,12 +13,10 @@ class ListItemsHome extends GetView<HomeControllerImp> {
   @override
   Widget build(BuildContext context) {
     return Container(
-     
-      margin: const EdgeInsets.only(top: 10),
-      height: 130,
-     // width: 100,
+      // margin: const EdgeInsets.only(top: 10),
+      height: 140,
+      // width: 100,
       child: ListView.builder(
-      
           scrollDirection: Axis.horizontal,
           itemCount: controller.items.length,
           itemBuilder: (context, index) {
@@ -39,33 +37,33 @@ class ItemsHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      
       children: [
         Container(
-          margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 10),
+          // margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Image.network(
             "${AppLinkApi.imagestitems}/${itemsmodel.itemsImage}",
+            height: 100,
+            width: 150,
             fit: BoxFit.fill,
           ),
         ),
-
         Container(
-          height: 150,
-          width: 200,
+          height: 120,
+          width: 190,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: AppColor.grey.withOpacity(0.5)),
         ),
         Positioned(
-          right: 10,
-          left: 15,
-          top: 5,
+          left: 10,
           child: Text(
             "${translateDataBase(itemsmodel.itemsNameAr, itemsmodel.itemsName)}",
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 20,
+              fontSize: 15,
             ),
           ),
         ),

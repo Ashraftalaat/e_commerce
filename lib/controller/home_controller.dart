@@ -3,10 +3,11 @@ import 'package:e_commerce/core/constant/routs.dart';
 import 'package:e_commerce/core/function/handlingdata.dart';
 import 'package:e_commerce/core/services/serviceslocal.dart';
 import 'package:e_commerce/data/datasource/remote/home_data.dart';
+import 'package:e_commerce/data/model/items.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-abstract class HomeController extends GetxController {
+abstract class HomeController extends SearchMixController {
   initialData();
   getdata();
   gotoItems(List categories, int selectedCat, String catid);
@@ -25,22 +26,6 @@ class HomeControllerImp extends HomeController {
   List items = [];
 
   late StatusRequest statusRequest;
-
-  late TextEditingController search;
-
-  bool isSearch = false;
-
-  checkSearch(val) {
-    if (val == "") {
-      isSearch = false;
-      update();
-    }
-  }
-
-  onSearchItems() {
-    isSearch = true;
-    update();
-  }
 
   @override
   initialData() {
@@ -86,5 +71,56 @@ class HomeControllerImp extends HomeController {
       "selectedCat": selectedCat,
       "catid": catid,
     });
+  }
+
+  gotoPageItemsDetails(itemsmodel) {
+    Get.toNamed(AppNamesRouts.itemsdetails, arguments: {
+      "itemsmodel": itemsmodel,
+    });
+  }
+}
+
+class SearchMixController extends GetxController {
+  late TextEditingController search;
+  List<Itemsmodel> listdata = [];
+  HomeData homeData = HomeData(Get.find());
+  late StatusRequest statusRequest;
+
+  searchdata() async {
+    // اولا التحميل بياخد وقت
+    statusRequest = StatusRequest.loading;
+    //getData() الموجودة في مجلد data
+    var response = await homeData.searchData(search.text);
+    print("==================== controllr $response");
+    // handlingData هتحدد نتيجة StatusRequest
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        listdata.clear();
+        // لو نجح ضيف كل البيانات اللي رجعت
+        List responsedata = response['data'];
+        listdata.addAll(responsedata.map((e) => Itemsmodel.fromJson(e)));
+        // items.addAll(response['items']['data']);
+      } else {
+        // لو مفيش بيانات
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
+  }
+
+  bool isSearch = false;
+
+  checkSearch(val) {
+    if (val == "") {
+      isSearch = false;
+    }
+    update();
+  }
+
+  onSearchItems() {
+    isSearch = true;
+    searchdata();
+    update();
   }
 }

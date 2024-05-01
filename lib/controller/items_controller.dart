@@ -1,19 +1,20 @@
+import 'package:e_commerce/controller/home_controller.dart';
 import 'package:e_commerce/core/class/statusrequest.dart';
 import 'package:e_commerce/core/constant/routs.dart';
 import 'package:e_commerce/core/function/handlingdata.dart';
 import 'package:e_commerce/core/services/serviceslocal.dart';
 import 'package:e_commerce/data/datasource/remote/items_data.dart';
 import 'package:e_commerce/data/model/items.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class ItemsController extends GetxController {
-  initialData();
   changeCat(int val, String catval);
   getData(String cateid);
   gotoPageItemsDetails(Itemsmodel itemsmodel);
 }
 
-class ItemsControllerImp extends ItemsController {
+class ItemsControllerImp extends SearchMixController {
   List categories = [];
   int? selectedCat;
   String? catid;
@@ -26,11 +27,11 @@ class ItemsControllerImp extends ItemsController {
 
   @override
   void onInit() {
+    search = TextEditingController();
     initialData();
     super.onInit();
   }
 
-  @override
   initialData() {
     categories = Get.arguments["categories"];
     selectedCat = Get.arguments["selectedCat"];
@@ -39,7 +40,6 @@ class ItemsControllerImp extends ItemsController {
     getData(catid!);
   }
 
-  @override
   changeCat(val, catval) {
     selectedCat = val;
     catid = catval;
@@ -47,7 +47,6 @@ class ItemsControllerImp extends ItemsController {
     update();
   }
 
-  @override
   getData(cateid) async {
     // لعدم اضافة الداتا مرة اخري عند الضغط علي  changeCat(val, catval)
     data.clear();
@@ -71,7 +70,6 @@ class ItemsControllerImp extends ItemsController {
     update();
   }
 
-  @override
   gotoPageItemsDetails(itemsmodel) {
     Get.toNamed(AppNamesRouts.itemsdetails, arguments: {
       "itemsmodel": itemsmodel,
