@@ -2,6 +2,7 @@ class AppImageAsset {
   static const String rootImage = "assets/images";
   static const String rootLottie = "assets/lottie";
   static const String avatar = "$rootImage/avatar.png";
+  static const String sale = "$rootImage/001-sale.png";
 
   static const String logo = "$rootImage/logo.png";
   static const String onBoardingImageOne = "$rootImage/one.PNG";
@@ -11,4 +12,5 @@ class AppImageAsset {
   static const String nodata = "$rootLottie/nodata.json";
   static const String offline = "$rootLottie/offline.json";
   static const String server = "$rootLottie/server.json";
+
 }

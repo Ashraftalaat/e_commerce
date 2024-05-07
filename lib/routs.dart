@@ -1,5 +1,8 @@
 import 'package:e_commerce/core/constant/routs.dart';
 import 'package:e_commerce/core/middleware/mymiddleware.dart';
+import 'package:e_commerce/view/screen/address/add.dart';
+import 'package:e_commerce/view/screen/address/adddetails.dart';
+import 'package:e_commerce/view/screen/address/view.dart';
 import 'package:e_commerce/view/screen/auth/forgetpassword/forgetpassword.dart';
 import 'package:e_commerce/view/screen/auth/forgetpassword/resetpassword.dart';
 import 'package:e_commerce/view/screen/auth/forgetpassword/success_resetpassword.dart';
@@ -54,8 +57,14 @@ List<GetPage<dynamic>>? routes = [
   // favorite
   GetPage(name: AppNamesRouts.myfavorite, page: () => const MyFavorite()),
 
- // Cart
+  // Cart
   GetPage(name: AppNamesRouts.cart, page: () => const Cart()),
+
+  // Address
+  GetPage(name: AppNamesRouts.addressview, page: () => const AddressView()),
+  GetPage(name: AppNamesRouts.addressadd, page: () => const AddressAdd()),
+  GetPage(name: AppNamesRouts.addressadddetails, page: () => const AddressAddDetails()),
+
 ];
 
 // // يفضل الروت خارج constant لسهولة التنقل بين الصفحات

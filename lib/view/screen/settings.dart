@@ -1,6 +1,7 @@
 import 'package:e_commerce/controller/auth/forgetpassword/settings_controller.dart';
 import 'package:e_commerce/core/constant/color.dart';
 import 'package:e_commerce/core/constant/imageasset.dart';
+import 'package:e_commerce/core/constant/routs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -51,7 +52,9 @@ class Setting extends StatelessWidget {
                 ListTile(
                   title: const Text("Address"),
                   trailing: const Icon(Icons.location_on_outlined),
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(AppNamesRouts.addressview);
+                  },
                 ),
                 const Divider(),
                 ListTile(

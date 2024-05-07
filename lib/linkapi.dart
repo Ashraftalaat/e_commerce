@@ -48,5 +48,11 @@ class AppLinkApi {
   static const String cartview = "$server/cart/view.php";
   static const String cartgetcountitems = "$server/cart/getcountitems.php";
 
-  //======================  search  ========================
+  //======================  Address  ========================
+  static const String addressview = "$server/address/view.php";
+  static const String addressadd = "$server/address/add.php";
+  static const String addressedit = "$server/address/edit.php";
+  static const String addressdelete = "$server/address/delete.php";
+
+
 }

@@ -75,4 +75,5 @@ class ItemsControllerImp extends SearchMixController {
       "itemsmodel": itemsmodel,
     });
   }
+  
 }

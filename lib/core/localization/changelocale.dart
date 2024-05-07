@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/constant/themedata.dart';
 import 'package:e_commerce/core/services/serviceslocal.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 
 class LocaleController extends GetxController {
@@ -16,8 +17,38 @@ class LocaleController extends GetxController {
     Get.updateLocale(locale);
   }
 
+  requestPerLocation() async {
+    //نسخ البيرمشن من موقع Geolocator
+    bool serviceEnabled;
+    LocationPermission permission;
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return const GetSnackBar(
+        title: "تنبية",
+        message: "الرجاء تشغيل خدمة تحديد الموقع",
+      );
+    }
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return const GetSnackBar(
+          title: "تنبية",
+          message: "الرجاء اعطاء صلاحية الوصول للموقع",
+        );
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      return const GetSnackBar(
+        title: "تنبية",
+        message: "لايمكن استخدام التطبيق بدون الموقع",
+      );
+    }
+  }
+
   @override
   void onInit() {
+    requestPerLocation();
     String? sharedPrefLang = myServices.sharedPreferences.getString("lang");
     if (sharedPrefLang == "ar") {
       language = const Locale("ar");

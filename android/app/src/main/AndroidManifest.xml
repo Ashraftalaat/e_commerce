@@ -1,9 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package = "com.atslook.e_commerce">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:label="e_commerce"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyDCBLFSe6DSsO4jW8PX0caS1MJMrPgm_zY"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

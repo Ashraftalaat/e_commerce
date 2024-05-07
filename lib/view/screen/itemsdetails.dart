@@ -68,7 +68,7 @@ class ItemsDetails extends StatelessWidget {
                                 onRemove: () {
                                   controller.delete();
                                 },
-                                price: "${controller.itemsmodel.itemsPrice}",
+                                price: "${controller.itemsmodel.itemspricediscount}",
                                 count: "${controller.countitems}"),
                             const SizedBox(
                               height: 10,
