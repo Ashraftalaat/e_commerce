@@ -26,6 +26,9 @@ class AppNamesRouts {
   // Cart
   static const String cart = "/cart";
 
+  // CheckOut
+  static const String checkout = "/checkout";
+
   // Address
   static const String addressview = "/addressview";
   static const String addressadd = "/addressadd";

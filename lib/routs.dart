@@ -12,6 +12,7 @@ import 'package:e_commerce/view/screen/auth/signup.dart';
 import 'package:e_commerce/view/screen/auth/success_signup.dart';
 import 'package:e_commerce/view/screen/auth/verifycodesignup.dart';
 import 'package:e_commerce/view/screen/cart.dart';
+import 'package:e_commerce/view/screen/checkout.dart';
 import 'package:e_commerce/view/screen/homescreen.dart';
 import 'package:e_commerce/view/screen/items.dart';
 import 'package:e_commerce/view/screen/itemsdetails.dart';
@@ -59,6 +60,9 @@ List<GetPage<dynamic>>? routes = [
 
   // Cart
   GetPage(name: AppNamesRouts.cart, page: () => const Cart()),
+
+   // Check Out
+  GetPage(name: AppNamesRouts.checkout, page: () => const CheckOut()),
 
   // Address
   GetPage(name: AppNamesRouts.addressview, page: () => const AddressView()),

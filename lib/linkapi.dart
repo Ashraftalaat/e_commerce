@@ -54,5 +54,8 @@ class AppLinkApi {
   static const String addressedit = "$server/address/edit.php";
   static const String addressdelete = "$server/address/delete.php";
 
+  //======================  Coupon  ========================
+  static const String checkcoupon = "$server/coupon/checkcoupon.php";
+
 
 }

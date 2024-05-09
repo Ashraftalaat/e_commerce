@@ -3,7 +3,6 @@ import 'package:e_commerce/core/class/handingdataview.dart';
 import 'package:e_commerce/linkapi.dart';
 import 'package:e_commerce/view/widget/cart/custom_bottom_navigationbar_cart.dart';
 import 'package:e_commerce/view/widget/cart/customitemscartlist.dart';
-import 'package:e_commerce/view/widget/cart/topappbarcart.dart';
 import 'package:e_commerce/view/widget/cart/topcardcart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,13 +14,21 @@ class Cart extends StatelessWidget {
   Widget build(BuildContext context) {
     CartController cartController = Get.put(CartController());
     return Scaffold(
+        appBar: AppBar(
+          title: const Text("My Cart"),
+        ),
         bottomNavigationBar: GetBuilder<CartController>(
           builder: (cartController) => HandingDataView(
             statusRequest: cartController.statusRequest,
             widget: BottomNavigationBarCart(
-                price: "${cartController.priceOrder}",
                 shipping: "50",
-                totalprice: "550"),
+                onApplyCoupon: () {
+                  cartController.checkCoupon();
+                },
+                mycontroller: cartController.controllerCoupon,
+                price: "${cartController.priceOrder}",
+                discount: "${cartController.discountcoupon}",
+                totalprice: "${cartController.getTotalPrice()}"),
           ),
         ),
         body: GetBuilder<CartController>(
@@ -29,7 +36,7 @@ class Cart extends StatelessWidget {
                   statusRequest: controller.statusRequest,
                   widget: ListView(
                     children: [
-                      const TopAppBarCart(title: "My Cart"),
+                      //    const TopAppBarCart(title: "My Cart"),
                       TopCardCart(
                           message:
                               "You have ${cartController.totalcountitems} Items in Your List"),
@@ -39,15 +46,15 @@ class Cart extends StatelessWidget {
                       ...List.generate(
                         controller.data.length,
                         (index) => CustomItemsCartList(
-                            onAdd: () async{
-                            await  cartController
+                            onAdd: () async {
+                              await cartController
                                   .add("${cartController.data[index].itemsId}");
                               cartController.refreshPage();
                             },
-                            onRemove: () async{
-                            await  cartController.delete(
+                            onRemove: () async {
+                              await cartController.delete(
                                   "${cartController.data[index].itemsId}");
-                                  cartController.refreshPage();
+                              cartController.refreshPage();
                             },
                             imagename:
                                 "${AppLinkApi.imagestitems}/${cartController.data[index].itemsImage}",

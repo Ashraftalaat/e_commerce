@@ -32,4 +32,11 @@ class CartData {
     //fold بترجع 2 parmeter l & r
     return response.fold((l) => l, (r) => r);
   }
+ checkCoupon(String couponname) async {
+    //لاستقبال وعرض البيانات فقط
+    var response = await crud
+        .postdata(AppLinkApi.checkcoupon, {"couponname": couponname});
+    //fold بترجع 2 parmeter l & r
+    return response.fold((l) => l, (r) => r);
+  }
 }

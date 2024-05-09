@@ -1,14 +1,23 @@
+import 'dart:ffi';
+import 'dart:ui';
+
 import 'package:e_commerce/core/class/statusrequest.dart';
 import 'package:e_commerce/core/function/handlingdata.dart';
 import 'package:e_commerce/core/services/serviceslocal.dart';
 import 'package:e_commerce/data/datasource/remote/cart_data.dart';
 import 'package:e_commerce/data/model/cart.dart';
+import 'package:e_commerce/data/model/coupon.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController {
   MyServices myServices = Get.find();
   CartData cartData = CartData(Get.find());
+  TextEditingController? controllerCoupon;
+  CouponModel? couponModel;
+  int discountcoupon = 0;
+  String? couponename;
 
   late StatusRequest statusRequest;
 
@@ -31,8 +40,9 @@ class CartController extends GetxController {
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
         Get.rawSnackbar(
-          duration: const Duration(seconds: 1),
-            title: "اشعار", messageText: const Text("تم اضافة المنتج السلة "));
+            duration: const Duration(seconds: 1),
+            title: "اشعار",
+            messageText: const Text("تم اضافة المنتج السلة "));
         // مش محتاجين البيانات هنا
         //  data.addAll(response['data']);
       } else {
@@ -40,7 +50,7 @@ class CartController extends GetxController {
         statusRequest = StatusRequest.failure;
       }
     }
-     update();
+    update();
   }
 
   delete(String itemsid) async {
@@ -56,8 +66,9 @@ class CartController extends GetxController {
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
         Get.rawSnackbar(
-          duration: const Duration(seconds: 1),
-            title: "اشعار", messageText: const Text("تم حذف المنتج من السلة "));
+            duration: const Duration(seconds: 1),
+            title: "اشعار",
+            messageText: const Text("تم حذف المنتج من السلة "));
         // مش محتاجين البيانات هنا
         //  data.addAll(response['data']);
       } else {
@@ -67,8 +78,6 @@ class CartController extends GetxController {
     }
     update();
   }
-
-
 
   view() async {
     // اولا التحميل بياخد وقت
@@ -102,6 +111,36 @@ class CartController extends GetxController {
     update();
   }
 
+  checkCoupon() async {
+    // اولا التحميل بياخد وقت
+    statusRequest = StatusRequest.loading;
+    update();
+    //getData() الموجودة في مجلد data
+    var response = await cartData.checkCoupon(controllerCoupon!.text);
+    print("==================== controllr $response");
+    // handlingData هتحدد نتيجة StatusRequest
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        //ماب عشان البيانات اللي بترجع في صورة ماب
+        Map<String, dynamic> datacoupon = response['data'];
+        couponModel = CouponModel.fromJson(datacoupon);
+        discountcoupon = int.parse(couponModel!.couponDiscount!.toString());
+        couponename = couponModel!.couponName;
+      } else {
+        // لو مفيش بيانات
+        //  statusRequest = StatusRequest.failure;
+        discountcoupon = 0;
+        couponename = null;
+      }
+    }
+    update();
+  }
+
+  getTotalPrice() {
+    return (priceOrder - priceOrder * discountcoupon / 100);
+  }
+
   resetVarCart() {
     priceOrder = 0.0;
     totalcountitems = 0;
@@ -115,6 +154,7 @@ class CartController extends GetxController {
 
   @override
   void onInit() {
+    controllerCoupon = TextEditingController();
     view();
     super.onInit();
   }
