@@ -57,5 +57,8 @@ class AppLinkApi {
   //======================  Coupon  ========================
   static const String checkcoupon = "$server/coupon/checkcoupon.php";
 
-
+//======================  Orders  ========================
+  static const String checkOut = "$server/orders/checkout.php";
+  static const String pendingorders = "$server/orders/pending.php";
+  static const String archiveorders = "$server/orders/archive.php";
 }

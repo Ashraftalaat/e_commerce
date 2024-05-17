@@ -2,6 +2,7 @@ import 'dart:ffi';
 import 'dart:ui';
 
 import 'package:e_commerce/core/class/statusrequest.dart';
+import 'package:e_commerce/core/constant/routs.dart';
 import 'package:e_commerce/core/function/handlingdata.dart';
 import 'package:e_commerce/core/services/serviceslocal.dart';
 import 'package:e_commerce/data/datasource/remote/cart_data.dart';
@@ -18,6 +19,8 @@ class CartController extends GetxController {
   CouponModel? couponModel;
   int discountcoupon = 0;
   String? couponename;
+
+  String? couponid;
 
   late StatusRequest statusRequest;
 
@@ -127,11 +130,14 @@ class CartController extends GetxController {
         couponModel = CouponModel.fromJson(datacoupon);
         discountcoupon = int.parse(couponModel!.couponDiscount!.toString());
         couponename = couponModel!.couponName;
+        couponid = couponModel!.couponId.toString();
       } else {
         // لو مفيش بيانات
         //  statusRequest = StatusRequest.failure;
         discountcoupon = 0;
         couponename = null;
+        couponid = null;
+        Get.snackbar("warning", "coupon not valid");
       }
     }
     update();
@@ -139,6 +145,19 @@ class CartController extends GetxController {
 
   getTotalPrice() {
     return (priceOrder - priceOrder * discountcoupon / 100);
+  }
+
+  gotoPageCheckOut() {
+    //يجب وضع return حتي لايظهر الرسالة ويدخل علي صفحة checkout
+    if (data.isEmpty) {
+      return Get.snackbar("تنبية", "السلة فارغة");
+    }
+    Get.toNamed(AppNamesRouts.checkout, arguments: {
+      //ولو بيساوي null خلية بيساوي صفر
+      "couponeid": couponid ?? "0",
+      "priceorder": priceOrder.toString(),
+      "discountcoupon": discountcoupon.toString(),
+    });
   }
 
   resetVarCart() {

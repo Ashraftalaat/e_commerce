@@ -50,6 +50,14 @@ class Setting extends StatelessWidget {
                 ),
                 const Divider(),
                 ListTile(
+                  title: const Text("Orders"),
+                  trailing: const Icon(Icons.card_travel),
+                  onTap: () {
+                    Get.toNamed(AppNamesRouts.pending);
+                  },
+                ),
+                const Divider(),
+                ListTile(
                   title: const Text("Address"),
                   trailing: const Icon(Icons.location_on_outlined),
                   onTap: () {

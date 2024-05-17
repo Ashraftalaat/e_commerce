@@ -22,7 +22,9 @@ class ItemsDetailsControllerImp extends ItemsDetailsController {
   List<CartModel> data = [];
 
   late Itemsmodel itemsmodel;
+  
   int countitems = 0;
+
   late StatusRequest statusRequest;
  // CartController cartController = Get.put(CartController());
   List subItems = [
@@ -142,8 +144,8 @@ addItems(String itemsid) async {
   }
 
   delete() {
-    deleteItems(itemsmodel.itemsId.toString());
     if (countitems > 0) {
+    deleteItems(itemsmodel.itemsId.toString());
       countitems--;
       update();
     }

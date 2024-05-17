@@ -19,6 +19,7 @@ import 'package:e_commerce/view/screen/itemsdetails.dart';
 import 'package:e_commerce/view/screen/language.dart';
 import 'package:e_commerce/view/screen/myfavorite.dart';
 import 'package:e_commerce/view/screen/onboarding.dart';
+import 'package:e_commerce/view/screen/orders/pending.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -63,6 +64,9 @@ List<GetPage<dynamic>>? routes = [
 
    // Check Out
   GetPage(name: AppNamesRouts.checkout, page: () => const CheckOut()),
+
+  // Orders
+  GetPage(name: AppNamesRouts.pending, page: () => const OrdersPending()),
 
   // Address
   GetPage(name: AppNamesRouts.addressview, page: () => const AddressView()),
