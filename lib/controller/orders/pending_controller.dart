@@ -16,6 +16,7 @@ class OrdersPendingController extends GetxController {
     data.clear();
     // اولا التحميل بياخد وقت
     statusRequest = StatusRequest.loading;
+    update();
     //getData() الموجودة في مجلد data
     var response = await ordersPendingData
         .getData(myServices.sharedPreferences.getString("id")!);
@@ -33,6 +34,11 @@ class OrdersPendingController extends GetxController {
       }
     }
     update();
+  }
+
+//  فانكشن لتحديث البيانات
+  refreshOrder() {
+    getOrders();
   }
 
   String printOrdersType(String val) {
