@@ -4,7 +4,6 @@ import 'package:e_commerce/core/function/handlingdata.dart';
 import 'package:e_commerce/core/services/serviceslocal.dart';
 import 'package:e_commerce/data/datasource/remote/home_data.dart';
 import 'package:e_commerce/data/model/items.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

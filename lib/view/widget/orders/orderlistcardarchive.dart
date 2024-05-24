@@ -1,4 +1,4 @@
-import 'package:e_commerce/controller/orders/pending_controller.dart';
+import 'package:e_commerce/controller/orders/archive_controller.dart';
 import 'package:e_commerce/core/constant/color.dart';
 import 'package:e_commerce/core/constant/routs.dart';
 import 'package:e_commerce/data/model/orders/orders.dart';
@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
 
-class CardOrderList extends GetView<OrdersPendingController> {
+class OrdersLisrtCardArchive extends GetView<OrdersArchiveController> {
   final OrdersModel listData;
-  const CardOrderList({super.key, required this.listData});
+  const OrdersLisrtCardArchive({super.key, required this.listData});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,8 @@ class CardOrderList extends GetView<OrdersPendingController> {
                 ),
                 const Spacer(),
                 MaterialButton(
-                  shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                  shape: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
                   color: AppColor.thirdColor,
                   onPressed: () {
                     Get.toNamed(AppNamesRouts.detailsorder,
@@ -73,20 +74,6 @@ class CardOrderList extends GetView<OrdersPendingController> {
                 const SizedBox(
                   width: 5,
                 ),
-                if (listData.ordersStatus == 0)
-                MaterialButton(
-                  shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                  color: AppColor.thirdColor,
-                  onPressed: () {
-                    controller.deleteOrders(listData.ordersId.toString());
-                  },
-                  child: const Text(
-                    "Delete",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.secondColor),
-                  ),
-                )
               ],
             )
           ],

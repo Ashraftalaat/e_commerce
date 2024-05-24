@@ -13,4 +13,12 @@ class OrdersPendingData {
     //fold بترجع 2 parmeter l & r
     return response.fold((l) => l, (r) => r);
   }
+
+ deleteData(String ordersid) async {
+    //لاستقبال وعرض البيانات فقط
+    var response =
+        await crud.postdata(AppLinkApi.ordersdelete, {"id": ordersid});
+    //fold بترجع 2 parmeter l & r
+    return response.fold((l) => l, (r) => r);
+  }
 }

@@ -53,7 +53,15 @@ class Setting extends StatelessWidget {
                   title: const Text("Orders"),
                   trailing: const Icon(Icons.card_travel),
                   onTap: () {
-                    Get.toNamed(AppNamesRouts.pending);
+                    Get.toNamed(AppNamesRouts.pendingorder);
+                  },
+                ),
+                 const Divider(),
+                ListTile(
+                  title: const Text("Archive"),
+                  trailing: const Icon(Icons.card_travel),
+                  onTap: () {
+                    Get.toNamed(AppNamesRouts.archiveorder);
                   },
                 ),
                 const Divider(),

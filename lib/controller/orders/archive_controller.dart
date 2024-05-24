@@ -1,15 +1,16 @@
 import 'package:e_commerce/core/class/statusrequest.dart';
 import 'package:e_commerce/core/function/handlingdata.dart';
 import 'package:e_commerce/core/services/serviceslocal.dart';
+import 'package:e_commerce/data/datasource/remote/orders/archive_data.dart';
 import 'package:e_commerce/data/datasource/remote/orders/pending_data.dart';
 import 'package:e_commerce/data/model/orders/orders.dart';
 import 'package:get/get.dart';
 
-class OrdersPendingController extends GetxController {
+class OrdersArchiveController extends GetxController {
   List<OrdersModel> data = [];
   late StatusRequest statusRequest;
   MyServices myServices = Get.find();
-  OrdersPendingData ordersPendingData = OrdersPendingData(Get.find());
+  OrdersArchiveData ordersArchiveData = OrdersArchiveData(Get.find());
 
   getOrders() async {
     // لعدم اضافة الداتا مرة اخري عند الضغط علي  changeCat(val, catval)
@@ -18,7 +19,7 @@ class OrdersPendingController extends GetxController {
     statusRequest = StatusRequest.loading;
     update();
     //getData() الموجودة في مجلد data
-    var response = await ordersPendingData
+    var response = await ordersArchiveData
         .getData(myServices.sharedPreferences.getString("id")!);
     print("==================== controllr $response");
     // handlingData هتحدد نتيجة StatusRequest
@@ -36,27 +37,6 @@ class OrdersPendingController extends GetxController {
     update();
   }
 
-  deleteOrders(String ordersid) async {
-    // لعدم اضافة الداتا مرة اخري عند الضغط علي  changeCat(val, catval)
-    data.clear();
-    // اولا التحميل بياخد وقت
-    statusRequest = StatusRequest.loading;
-    update();
-    //getData() الموجودة في مجلد data
-    var response = await ordersPendingData.deleteData(ordersid);
-    print("==================== controllr $response");
-    // handlingData هتحدد نتيجة StatusRequest
-    statusRequest = handlingData(response);
-    if (StatusRequest.success == statusRequest) {
-      if (response['status'] == "success") {
-        refreshOrder();
-      } else {
-        // لو مفيش بيانات
-        statusRequest = StatusRequest.failure;
-      }
-    }
-    update();
-  }
 
 //  فانكشن لتحديث البيانات
   refreshOrder() {
@@ -85,7 +65,7 @@ class OrdersPendingController extends GetxController {
     } else if (val == "1") {
       return "The Order is bening prepared";
     } else if (val == "2") {
-      return "The Order is bening prepared";
+      return "Ready to picked up by delivery man";
     } else if (val == "3") {
       return "On The Way";
     } else {

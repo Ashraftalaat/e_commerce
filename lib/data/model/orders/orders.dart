@@ -11,6 +11,14 @@ class OrdersModel {
   int? ordersPaymentmethod;
   int? ordersStatus;
   String? ordersDatetime;
+  int? addressId;
+  int? addressUsersid;
+  String? addressName;
+  String? addressPhone;
+  String? addressCity;
+  String? addressStreet;
+  double? addressLat;
+  double? addressLong;
 
   OrdersModel(
       {this.ordersId,
@@ -24,7 +32,15 @@ class OrdersModel {
       this.coupondiscount,
       this.ordersPaymentmethod,
       this.ordersStatus,
-      this.ordersDatetime});
+      this.ordersDatetime,
+      this.addressId,
+      this.addressUsersid,
+      this.addressName,
+      this.addressPhone,
+      this.addressCity,
+      this.addressStreet,
+      this.addressLat,
+      this.addressLong});
 
   OrdersModel.fromJson(Map<String, dynamic> json) {
     ordersId = json['orders_id'];
@@ -39,6 +55,14 @@ class OrdersModel {
     ordersPaymentmethod = json['orders_paymentmethod'];
     ordersStatus = json['orders_status'];
     ordersDatetime = json['orders_datetime'];
+    addressId = json['address_id'];
+    addressUsersid = json['address_usersid'];
+    addressName = json['address_name'];
+    addressPhone = json['address_phone'];
+    addressCity = json['address_city'];
+    addressStreet = json['address_street'];
+    addressLat = json['address_lat'];
+    addressLong = json['address_long'];
   }
 
   Map<String, dynamic> toJson() {
@@ -55,6 +79,14 @@ class OrdersModel {
     data['orders_paymentmethod'] = this.ordersPaymentmethod;
     data['orders_status'] = this.ordersStatus;
     data['orders_datetime'] = this.ordersDatetime;
+    data['address_id'] = this.addressId;
+    data['address_usersid'] = this.addressUsersid;
+    data['address_name'] = this.addressName;
+    data['address_phone'] = this.addressPhone;
+    data['address_city'] = this.addressCity;
+    data['address_street'] = this.addressStreet;
+    data['address_lat'] = this.addressLat;
+    data['address_long'] = this.addressLong;
     return data;
   }
 }

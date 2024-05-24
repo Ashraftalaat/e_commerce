@@ -1,0 +1,33 @@
+import 'package:e_commerce/controller/orders/archive_controller.dart';
+import 'package:e_commerce/controller/orders/pending_controller.dart';
+import 'package:e_commerce/core/class/handingdataview.dart';
+import 'package:e_commerce/view/widget/orders/orderlistcard.dart';
+import 'package:e_commerce/view/widget/orders/orderlistcardarchive.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class OrdersArchiveView extends StatelessWidget {
+  const OrdersArchiveView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Get.put(OrdersArchiveController());
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Orders"),
+      ),
+      body: Container(
+          padding: const EdgeInsets.all(10),
+          child: GetBuilder<OrdersArchiveController>(
+              builder: (controller) => HandingDataView(
+                    statusRequest: controller.statusRequest,
+                    widget: ListView.builder(
+                      itemCount: controller.data.length,
+                      itemBuilder: (context, index) => OrdersLisrtCardArchive(
+                        listData: controller.data[index],
+                      ),
+                    ),
+                  ))),
+    );
+  }
+}

@@ -54,14 +54,17 @@ class AppLinkApi {
   static const String addressedit = "$server/address/edit.php";
   static const String addressdelete = "$server/address/delete.php";
 
-  //======================  Coupon  ========================
+//======================  Coupon  ========================
   static const String checkcoupon = "$server/coupon/checkcoupon.php";
 
 //======================  Orders  ========================
   static const String checkOut = "$server/orders/checkout.php";
   static const String pendingorders = "$server/orders/pending.php";
   static const String archiveorders = "$server/orders/archive.php";
+  static const String ordersdetails = "$server/orders/details.php";
+  static const String ordersdelete = "$server/orders/delete.php";
 
-  //======================  Notification  ========================
+
+//======================  Notification  ========================
   static const String notification = "$server/notification.php";
 }

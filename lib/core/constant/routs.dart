@@ -30,8 +30,9 @@ class AppNamesRouts {
   static const String checkout = "/checkout";
 
   // Orders
-  static const String pending = "/pending";
-  static const String archive = "/archive";
+  static const String pendingorder = "/pending";
+  static const String archiveorder = "/archive";
+  static const String detailsorder = "/details";
 
   // Address
   static const String addressview = "/addressview";
