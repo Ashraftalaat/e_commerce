@@ -64,7 +64,10 @@ class AppLinkApi {
   static const String ordersdetails = "$server/orders/details.php";
   static const String ordersdelete = "$server/orders/delete.php";
 
-
 //======================  Notification  ========================
   static const String notification = "$server/notification.php";
+
+  //======================  Offers  ========================
+  static const String offers = "$server/offers.php";
+  static const String rating = "$server/rating.php";
 }

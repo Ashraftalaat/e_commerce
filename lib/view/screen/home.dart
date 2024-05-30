@@ -21,7 +21,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HomeControllerImp());
+  Get.put(HomeControllerImp());
     return GetBuilder<HomeControllerImp>(
       builder: (controller) => Container(
         padding: const EdgeInsets.symmetric(
@@ -49,16 +49,16 @@ class Home extends StatelessWidget {
             HandingDataView(
                 statusRequest: controller.statusRequest,
                 widget: !controller.isSearch
-                    ? const Column(
+                    ?  Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CustomCardHome(
-                              title: "A summer Surprise",
-                              body: "Cashback  20%"),
-                          CustomTitleHome(title: "Categories :"),
-                          ListCategories(),
-                          CustomTitleHome(title: "Product for you :"),
-                          ListItemsHome(),
+                      if(controller.settingsData.isNotEmpty)    CustomCardHome(
+                              title: "${controller.settingsData[0]["settings_titlehome"]}",
+                              body: "${controller.settingsData[0]["settings_bodyhome"]}"),
+                          const CustomTitleHome(title: "Categories :"),
+                          const ListCategories(),
+                          const CustomTitleHome(title: "Top Selling :"),
+                          const ListItemsHome(),
                         ],
                       )
                     : ListItemsSearch(listdatamodel: controller.listdata)),

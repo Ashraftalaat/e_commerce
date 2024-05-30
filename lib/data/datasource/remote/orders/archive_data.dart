@@ -14,5 +14,13 @@ class OrdersArchiveData {
     return response.fold((l) => l, (r) => r);
   }
 
+ratingData(String ordersid,String comment,double rating) async {
+    //لاستقبال وعرض البيانات فقط
+    var response =
+        await crud.postdata(AppLinkApi.rating, {"id": ordersid,"rating":rating.toString(),"comment":comment});
+    //fold بترجع 2 parmeter l & r
+    return response.fold((l) => l, (r) => r);
+  }
+
  
 }

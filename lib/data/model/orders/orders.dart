@@ -7,18 +7,20 @@ class OrdersModel {
   int? ordersPrice;
   int? ordersTotalprice;
   int? ordersCoupon;
+  int? ordersRating;
+  String? ordersNoterating;
   int? coupondiscount;
   int? ordersPaymentmethod;
   int? ordersStatus;
   String? ordersDatetime;
-  int? addressId;
-  int? addressUsersid;
+  String? addressId;
+  String? addressUsersid;
   String? addressName;
   String? addressPhone;
   String? addressCity;
   String? addressStreet;
-  double? addressLat;
-  double? addressLong;
+  String? addressLat;
+  String? addressLong;
 
   OrdersModel(
       {this.ordersId,
@@ -29,6 +31,8 @@ class OrdersModel {
       this.ordersPrice,
       this.ordersTotalprice,
       this.ordersCoupon,
+      this.ordersRating,
+      this.ordersNoterating,
       this.coupondiscount,
       this.ordersPaymentmethod,
       this.ordersStatus,
@@ -51,6 +55,8 @@ class OrdersModel {
     ordersPrice = json['orders_price'];
     ordersTotalprice = json['orders_totalprice'];
     ordersCoupon = json['orders_coupon'];
+    ordersRating = json['orders_rating'];
+    ordersNoterating = json['orders_noterating'];
     coupondiscount = json['coupondiscount'];
     ordersPaymentmethod = json['orders_paymentmethod'];
     ordersStatus = json['orders_status'];
@@ -75,6 +81,8 @@ class OrdersModel {
     data['orders_price'] = this.ordersPrice;
     data['orders_totalprice'] = this.ordersTotalprice;
     data['orders_coupon'] = this.ordersCoupon;
+    data['orders_rating'] = this.ordersRating;
+    data['orders_noterating'] = this.ordersNoterating;
     data['coupondiscount'] = this.coupondiscount;
     data['orders_paymentmethod'] = this.ordersPaymentmethod;
     data['orders_status'] = this.ordersStatus;

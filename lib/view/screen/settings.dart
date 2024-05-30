@@ -4,6 +4,7 @@ import 'package:e_commerce/core/constant/imageasset.dart';
 import 'package:e_commerce/core/constant/routs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Setting extends StatelessWidget {
   const Setting({super.key});
@@ -82,7 +83,9 @@ class Setting extends StatelessWidget {
                 ListTile(
                   title: const Text("Contact us"),
                   trailing: const Icon(Icons.phone_callback_outlined),
-                  onTap: () {},
+                  onTap: () async{
+                    launchUrl(Uri.parse("tel:01122449170"));
+                  },
                 ),
                 const Divider(),
                 ListTile(

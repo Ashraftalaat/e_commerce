@@ -24,6 +24,9 @@ class HomeControllerImp extends HomeController {
 //  List data = [];
   List categories = [];
   List items = [];
+  List settingsData = [];
+
+
 
   late StatusRequest statusRequest;
 
@@ -58,6 +61,7 @@ class HomeControllerImp extends HomeController {
         // لو نجح ضيف كل البيانات اللي رجعت
         categories.addAll(response['categories']['data']);
         items.addAll(response['items']['data']);
+        settingsData.addAll(response['settings']['data']);
       } else {
         // لو مفيش بيانات
         statusRequest = StatusRequest.failure;
@@ -81,6 +85,8 @@ class HomeControllerImp extends HomeController {
     });
   }
 }
+
+
 
 class SearchMixController extends GetxController {
   late TextEditingController search;

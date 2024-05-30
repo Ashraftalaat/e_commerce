@@ -37,7 +37,6 @@ class OrdersArchiveController extends GetxController {
     update();
   }
 
-
 //  فانكشن لتحديث البيانات
   refreshOrder() {
     getOrders();
@@ -71,6 +70,29 @@ class OrdersArchiveController extends GetxController {
     } else {
       return "Archive";
     }
+  }
+
+  submitRating(String ordersid, double rating, String comment) async {
+    // لعدم اضافة الداتا مرة اخري عند الضغط علي  changeCat(val, catval)
+    data.clear();
+    // اولا التحميل بياخد وقت
+    statusRequest = StatusRequest.loading;
+    update();
+    //getData() الموجودة في مجلد data
+    var response =
+        await ordersArchiveData.ratingData(ordersid, comment, rating);
+    print("==================== controllr $response");
+    // handlingData هتحدد نتيجة StatusRequest
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        getOrders();
+      } else {
+        // لو مفيش بيانات
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
   }
 
   @override
