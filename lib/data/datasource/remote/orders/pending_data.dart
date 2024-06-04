@@ -14,7 +14,7 @@ class OrdersPendingData {
     return response.fold((l) => l, (r) => r);
   }
 
- deleteData(String ordersid) async {
+  deleteData(String ordersid) async {
     //لاستقبال وعرض البيانات فقط
     var response =
         await crud.postdata(AppLinkApi.ordersdelete, {"id": ordersid});

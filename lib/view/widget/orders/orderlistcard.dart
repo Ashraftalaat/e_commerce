@@ -29,7 +29,7 @@ class CardOrderList extends GetView<OrdersPendingController> {
                 ),
                 const Spacer(),
                 Text(
-                  Jiffy.parse(listData.ordersDatetime!).fromNow(),
+                  Jiffy.parse(listData.ordersDatetime.toString()).fromNow(),//
                   style: const TextStyle(
                       color: AppColor.secondColor, fontWeight: FontWeight.bold),
                 ) // 25 years ago)
@@ -49,7 +49,7 @@ class CardOrderList extends GetView<OrdersPendingController> {
             Row(
               children: [
                 Text(
-                  "Total Price : ${listData.ordersTotalprice} \$",
+                  "Total Price : ${listData.ordersTotalprice.toString()} \$",//
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
@@ -95,3 +95,4 @@ class CardOrderList extends GetView<OrdersPendingController> {
     );
   }
 }
+

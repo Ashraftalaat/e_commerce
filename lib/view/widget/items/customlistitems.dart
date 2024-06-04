@@ -58,6 +58,23 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                   const SizedBox(
                     height: 10,
                   ),
+
+                  Row(
+                    children: [
+                      Container(
+                          padding: const EdgeInsets.only(top: 3),
+                          child: const Icon(
+                            Icons.timer_sharp,
+                            color: Colors.grey,
+                          )),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                          "${controller.deliveryTime} mintes",style: TextStyle(fontFamily: "sans",color: Colors.grey),)
+                    ],
+                  ),
+
                   // Row(
                   //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   //   children: [
@@ -71,8 +88,7 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                   //       child: Row(
                   //         children: [
                   //           ...List.generate(
-                  //             5,
-                  //             (index) => const Icon(
+                  //             5,0                 //             (index) => const Icon(
                   //               Icons.star,
                   //               color: AppColor.gold,
                   //               size: 15,

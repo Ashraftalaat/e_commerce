@@ -27,7 +27,7 @@ class ListItemsHome extends GetView<HomeControllerImp> {
   }
 }
 
-class ItemsHome extends StatelessWidget {
+class ItemsHome extends GetView<HomeControllerImp> {
   final Itemsmodel itemsmodel;
   const ItemsHome({
     super.key,
@@ -36,38 +36,43 @@ class ItemsHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          margin: const EdgeInsets.symmetric(horizontal: 10),
-          // margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          child: Image.network(
-            "${AppLinkApi.imagestitems}/${itemsmodel.itemsImage}",
-            height: 100,
-            width: 150,
-            fit: BoxFit.fill,
-          ),
-        ),
-        Container(
-          height: 120,
-          width: 190,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: AppColor.grey.withOpacity(0.5)),
-        ),
-        Positioned(
-          left: 10,
-          child: Text(
-            "${translateDataBase(itemsmodel.itemsNameAr, itemsmodel.itemsName)}",
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 15,
+    return InkWell(
+      onTap: () {
+       controller.gotoPageItemsDetails(itemsmodel);
+      },
+      child: Stack(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 10),
+            // margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            child: Image.network(
+              "${AppLinkApi.imagestitems}/${itemsmodel.itemsImage}",
+              height: 100,
+              width: 150,
+              fit: BoxFit.fill,
             ),
           ),
-        ),
-      ],
+          Container(
+            height: 120,
+            width: 190,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: AppColor.grey.withOpacity(0.5)),
+          ),
+          Positioned(
+            left: 10,
+            child: Text(
+              "${translateDataBase(itemsmodel.itemsNameAr, itemsmodel.itemsName)}",
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

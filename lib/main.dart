@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     LocaleController controller = Get.put(LocaleController());
     return GetMaterialApp(
+      // تم الانتهاء من Appusers
       locale: controller.language,
       translations: MyTranslation(),
       debugShowCheckedModeBanner: false,

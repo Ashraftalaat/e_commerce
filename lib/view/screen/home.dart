@@ -52,9 +52,10 @@ class Home extends StatelessWidget {
                     ?  Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                      if(controller.settingsData.isNotEmpty)    CustomCardHome(
-                              title: "${controller.settingsData[0]["settings_titlehome"]}",
-                              body: "${controller.settingsData[0]["settings_bodyhome"]}"),
+                    //  if(controller.settingsData.isNotEmpty)   
+                       CustomCardHome(
+                              title: controller.titleHomeCard,
+                              body: controller.bodyHomeCard),
                           const CustomTitleHome(title: "Categories :"),
                           const ListCategories(),
                           const CustomTitleHome(title: "Top Selling :"),

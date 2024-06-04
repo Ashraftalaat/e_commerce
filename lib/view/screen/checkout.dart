@@ -2,6 +2,7 @@ import 'package:e_commerce/controller/checkout_controller.dart';
 import 'package:e_commerce/core/class/handingdataview.dart';
 import 'package:e_commerce/core/constant/color.dart';
 import 'package:e_commerce/core/constant/imageasset.dart';
+import 'package:e_commerce/core/constant/routs.dart';
 import 'package:e_commerce/view/widget/checkout/carddeliverytype.dart';
 import 'package:e_commerce/view/widget/checkout/cardpaymentmethod.dart';
 import 'package:e_commerce/view/widget/checkout/cardshippingaddress.dart';
@@ -120,12 +121,28 @@ class CheckOut extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              if (controller.dataaddress.isNotEmpty)
                               const Text(
                                 "Shipping Address",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: AppColor.secondColor),
                               ),
+                              if (controller.dataaddress.isEmpty)
+                                InkWell(
+                                  onTap: () {
+                                    Get.toNamed(AppNamesRouts.addressadd);
+                                  },
+                                  child: const Center(
+                                    child: Text(
+                                      "Please Add Shipping Address \n Click Here",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: AppColor.primaryColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
                               const SizedBox(
                                 height: 10,
                               ),
@@ -135,7 +152,7 @@ class CheckOut extends StatelessWidget {
                                   onTap: () {
                                     controller.chooseShippingAddressid(
                                         //shipping
-                                        "${controller.dataaddress[index].addressId!}");
+                                        "${controller.dataaddress[index].addressId}");
                                   },
                                   child: CardShippingAddress(
                                       title:

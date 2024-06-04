@@ -13,14 +13,14 @@ class OrdersModel {
   int? ordersPaymentmethod;
   int? ordersStatus;
   String? ordersDatetime;
-  String? addressId;
-  String? addressUsersid;
+  int? addressId;
+  int? addressUsersid;
   String? addressName;
   String? addressPhone;
   String? addressCity;
   String? addressStreet;
-  String? addressLat;
-  String? addressLong;
+  double? addressLat;
+  double? addressLong;
 
   OrdersModel(
       {this.ordersId,

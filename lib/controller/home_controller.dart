@@ -18,6 +18,9 @@ class HomeControllerImp extends HomeController {
   String? username;
   String? id;
   String? lang;
+  String titleHomeCard = "";
+  String bodyHomeCard = "";
+  String deliveryTime = "";
 
   HomeData homeData = HomeData(Get.find());
   // لتخزين الداتا اللي هتيجي من Backend
@@ -25,8 +28,6 @@ class HomeControllerImp extends HomeController {
   List categories = [];
   List items = [];
   List settingsData = [];
-
-
 
   late StatusRequest statusRequest;
 
@@ -62,6 +63,12 @@ class HomeControllerImp extends HomeController {
         categories.addAll(response['categories']['data']);
         items.addAll(response['items']['data']);
         settingsData.addAll(response['settings']['data']);
+
+        titleHomeCard = settingsData[0]["settings_titlehome"];
+        bodyHomeCard = settingsData[0]["settings_bodyhome"];
+        deliveryTime = settingsData[0]["settings_deliverytime"].toString();
+        myServices.sharedPreferences
+            .setString("settings_deliverytime", deliveryTime).toString();
       } else {
         // لو مفيش بيانات
         statusRequest = StatusRequest.failure;
@@ -85,8 +92,6 @@ class HomeControllerImp extends HomeController {
     });
   }
 }
-
-
 
 class SearchMixController extends GetxController {
   late TextEditingController search;

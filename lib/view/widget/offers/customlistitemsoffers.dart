@@ -58,31 +58,48 @@ class CustomListItemsOffers extends GetView<OffersController> {
                   const SizedBox(
                     height: 10,
                   ),
+
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        "Rating 3.5",
-                        style: TextStyle(fontSize: 15),
-                      ),
                       Container(
-                        height: 17,
-                        alignment: Alignment.bottomCenter,
-                        child: Row(
-                          children: [
-                            ...List.generate(
-                              5,
-                              (index) => const Icon(
-                                Icons.star,
-                                color: AppColor.gold,
-                                size: 15,
-                              ),
-                            ),
-                          ],
-                        ),
+                          padding: const EdgeInsets.only(top: 3),
+                          child: const Icon(
+                            Icons.timer_sharp,
+                            color: Colors.grey,
+                          )),
+                      const SizedBox(
+                        width: 5,
                       ),
+                      Text(
+                          "${controller.deliveryTime} mintes",style: TextStyle(fontFamily: "sans",color: Colors.grey),)
                     ],
                   ),
+
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //   children: [
+                  //     const Text(
+                  //       "Rating 3.5",
+                  //       style: TextStyle(fontSize: 15),
+                  //     ),
+                  //     Container(
+                  //       height: 17,
+                  //       alignment: Alignment.bottomCenter,
+                  //       child: Row(
+                  //         children: [
+                  //           ...List.generate(
+                  //             5,
+                  //             (index) => const Icon(
+                  //               Icons.star,
+                  //               color: AppColor.gold,
+                  //               size: 15,
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   const SizedBox(
                     height: 10,
                   ),

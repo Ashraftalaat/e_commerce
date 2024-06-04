@@ -1,6 +1,7 @@
 import 'package:e_commerce/controller/home_controller.dart';
 import 'package:e_commerce/core/class/statusrequest.dart';
 import 'package:e_commerce/core/function/handlingdata.dart';
+import 'package:e_commerce/core/services/serviceslocal.dart';
 import 'package:e_commerce/data/datasource/remote/offers_data.dart';
 import 'package:e_commerce/data/model/items.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,9 @@ class OffersController extends SearchMixController {
   // لتخزين الداتا اللي هتيجي من Backend
   List<Itemsmodel> data = [];
   late StatusRequest statusRequest;
+  MyServices myServices = Get.find();
+
+  String deliveryTime = "";
 
   getData() async {
     // اولا التحميل بياخد وقت
@@ -26,6 +30,7 @@ class OffersController extends SearchMixController {
         data.addAll(listdata2.map((e) => Itemsmodel.fromJson(e)));
         // لو نجح ضيف كل البيانات اللي رجعت
         //  data.addAll(response['data']);
+        
       } else {
         // لو مفيش بيانات
         statusRequest = StatusRequest.failure;
@@ -37,6 +42,8 @@ class OffersController extends SearchMixController {
 // onInit مثل inistate
   @override
   void onInit() {
+    deliveryTime =
+        myServices.sharedPreferences.getString("settings_deliverytime")!;
     search = TextEditingController();
     getData();
     super.onInit();

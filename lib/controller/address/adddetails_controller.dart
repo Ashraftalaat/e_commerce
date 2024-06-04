@@ -52,6 +52,7 @@ class AddDetailsAddressController extends GetxController {
       if (response['status'] == "success") {
         // لو نجح ضيف كل البيانات اللي رجعت
         Get.offAllNamed(AppNamesRouts.homescreen);
+        Get.snackbar("Good", "Now  ,  You Can order to this address");
       } else {
         // لو مفيش بيانات
         statusRequest = StatusRequest.failure;

@@ -25,6 +25,8 @@ class ItemsControllerImp extends SearchMixController {
   List data = [];
   late StatusRequest statusRequest;
 
+  String deliveryTime = "";
+
   @override
   void onInit() {
     search = TextEditingController();
@@ -33,6 +35,8 @@ class ItemsControllerImp extends SearchMixController {
   }
 
   initialData() {
+    deliveryTime =
+        myServices.sharedPreferences.getString("settings_deliverytime")!;
     categories = Get.arguments["categories"];
     selectedCat = Get.arguments["selectedCat"];
     catid = Get.arguments["catid"];
@@ -75,5 +79,4 @@ class ItemsControllerImp extends SearchMixController {
       "itemsmodel": itemsmodel,
     });
   }
-  
 }

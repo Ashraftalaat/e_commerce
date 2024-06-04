@@ -11,6 +11,36 @@ class OrdersPendingController extends GetxController {
   MyServices myServices = Get.find();
   OrdersPendingData ordersPendingData = OrdersPendingData(Get.find());
 
+  String printOrdersType(String val) {
+    if (val == "0") {
+      return "delivery";
+    } else {
+      return "recive";
+    }
+  }
+
+  String printPaymentMethod(String val) {
+    if (val == "0") {
+      return "Cash On Delivery";
+    } else {
+      return "Payment Card";
+    }
+  }
+
+  String printOrderStatus(String val) {
+    if (val == "0") {
+      return "Pending Approval";
+    } else if (val == "1") {
+      return "The Order is bening prepared";
+    } else if (val == "2") {
+      return "The Order is bening prepared";
+    } else if (val == "3") {
+      return "On The Way";
+    } else {
+      return "Archive";
+    }
+  }
+
   getOrders() async {
     // لعدم اضافة الداتا مرة اخري عند الضغط علي  changeCat(val, catval)
     data.clear();
@@ -25,9 +55,10 @@ class OrdersPendingController extends GetxController {
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
-        List listData = response["data"];
+        List listData = response['data'];
         // لو نجح ضيف كل البيانات اللي رجعت
         data.addAll(listData.map((e) => OrdersModel.fromJson(e)));
+        
       } else {
         // لو مفيش بيانات
         statusRequest = StatusRequest.failure;
@@ -63,39 +94,10 @@ class OrdersPendingController extends GetxController {
     getOrders();
   }
 
-  String printOrdersType(String val) {
-    if (val == "0") {
-      return "delivery";
-    } else {
-      return "recive";
-    }
-  }
-
-  String printPaymentMethod(String val) {
-    if (val == "0") {
-      return "Cash On Delivery";
-    } else {
-      return "Payment Card";
-    }
-  }
-
-  String printOrderStatus(String val) {
-    if (val == "0") {
-      return "Pending Approval";
-    } else if (val == "1") {
-      return "The Order is bening prepared";
-    } else if (val == "2") {
-      return "The Order is bening prepared";
-    } else if (val == "3") {
-      return "On The Way";
-    } else {
-      return "Archive";
-    }
-  }
-
   @override
   void onInit() {
     getOrders();
+
     super.onInit();
   }
 }
