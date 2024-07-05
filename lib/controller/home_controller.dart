@@ -61,7 +61,7 @@ class HomeControllerImp extends HomeController {
       if (response['status'] == "success") {
         // لو نجح ضيف كل البيانات اللي رجعت
         categories.addAll(response['categories']['data']);
-        items.addAll(response['items']['data']);
+        items.addAll(response['items']['data']  );
         settingsData.addAll(response['settings']['data']);
 
         titleHomeCard = settingsData[0]["settings_titlehome"];

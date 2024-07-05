@@ -5,14 +5,14 @@ class AppLinkApi {
   // وننسخ IPv4 Address
   // ونضعها بدل localhost
   //http بدل https
-  static const String server = "http://192.168.1.3/ecommerce";
+  static const String server = "http://192.168.1.4/ecommerce";
   //في حالة host
   //static const String server = "https://ashraftalaat.infinityfreeapp.com/ecommerce";
 
   static const String test = "$server/test.php";
 
   //======================= Svg Image ==================
-  static const String imagestatic = "http://192.168.1.3/ecommerce/upload";
+  static const String imagestatic = "http://192.168.1.4/ecommerce/upload";
   static const String imagestcategories = "$imagestatic/categories";
   static const String imagestitems = "$imagestatic/items";
 

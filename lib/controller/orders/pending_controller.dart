@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/class/statusrequest.dart';
+import 'package:e_commerce/core/constant/routs.dart';
 import 'package:e_commerce/core/function/handlingdata.dart';
 import 'package:e_commerce/core/services/serviceslocal.dart';
 import 'package:e_commerce/data/datasource/remote/orders/pending_data.dart';
@@ -41,6 +42,11 @@ class OrdersPendingController extends GetxController {
     }
   }
 
+  gotopageTracking(OrdersModel ordersmodel) {
+    Get.toNamed(AppNamesRouts.tracking,
+        arguments: {"ordermodel": ordersmodel});
+  }
+
   getOrders() async {
     // لعدم اضافة الداتا مرة اخري عند الضغط علي  changeCat(val, catval)
     data.clear();
@@ -58,7 +64,6 @@ class OrdersPendingController extends GetxController {
         List listData = response['data'];
         // لو نجح ضيف كل البيانات اللي رجعت
         data.addAll(listData.map((e) => OrdersModel.fromJson(e)));
-        
       } else {
         // لو مفيش بيانات
         statusRequest = StatusRequest.failure;

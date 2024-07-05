@@ -1,7 +1,5 @@
 import 'package:e_commerce/controller/orders/archive_controller.dart';
-import 'package:e_commerce/controller/orders/pending_controller.dart';
 import 'package:e_commerce/core/class/handingdataview.dart';
-import 'package:e_commerce/view/widget/orders/orderlistcard.dart';
 import 'package:e_commerce/view/widget/orders/orderlistcardarchive.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

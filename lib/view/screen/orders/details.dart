@@ -60,7 +60,7 @@ class OrdersDetails extends StatelessWidget {
                                           textAlign: TextAlign.center,
                                         ),
                                         Text(
-                                          "${controller.data[index].itemsCount}",
+                                          "${controller.data[index].countitems}",
                                           textAlign: TextAlign.center,
                                         ),
                                         Text(

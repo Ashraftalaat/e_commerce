@@ -49,7 +49,7 @@ class MyTranslation extends Translations {
           "1": "Choose Language",
           "2": "Choose Product",
           "3":
-              "We Have a 100k Product , Choose \n Your Product From  Our \n E-commerce Shop",
+              "We Have a 100k Product , Choose \n Your Product From  Our  E-commerce Shop",
           "4": "Easy And Safe Paymnet",
           "5": "You can pay in cash \n or through payment gateways",
           "6": "Track Your Order",

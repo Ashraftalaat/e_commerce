@@ -22,6 +22,7 @@ import 'package:e_commerce/view/screen/onboarding.dart';
 import 'package:e_commerce/view/screen/orders/archive.dart';
 import 'package:e_commerce/view/screen/orders/details.dart';
 import 'package:e_commerce/view/screen/orders/pending.dart';
+import 'package:e_commerce/view/screen/orders/tracking.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -71,6 +72,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppNamesRouts.pendingorder, page: () => const OrdersPending()),
   GetPage(name: AppNamesRouts.detailsorder, page: () => const OrdersDetails()),
   GetPage(name: AppNamesRouts.archiveorder, page: () => const OrdersArchiveView()),
+  GetPage(name: AppNamesRouts.tracking, page: () => const OrdersTracking()),
 
 
 

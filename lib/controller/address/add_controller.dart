@@ -23,7 +23,7 @@ class AddAddressController extends GetxController {
 
   // final CameraPosition _kLake = const CameraPosition(
   //     bearing: 192.8334901395799,
-  //     target: LatLng(37.43296265331129, -122.08832357078792),
+  //     target: LatLng(37.43296265331129, 37.43296265331130),
   //     tilt: 59.440717697143555,
   //     zoom: 19.151926040649414);
 

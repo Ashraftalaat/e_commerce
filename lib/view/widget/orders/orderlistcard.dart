@@ -29,7 +29,7 @@ class CardOrderList extends GetView<OrdersPendingController> {
                 ),
                 const Spacer(),
                 Text(
-                  Jiffy.parse(listData.ordersDatetime.toString()).fromNow(),//
+                  Jiffy.parse(listData.ordersDatetime.toString()).fromNow(), //
                   style: const TextStyle(
                       color: AppColor.secondColor, fontWeight: FontWeight.bold),
                 ) // 25 years ago)
@@ -49,7 +49,7 @@ class CardOrderList extends GetView<OrdersPendingController> {
             Row(
               children: [
                 Text(
-                  "Total Price : ${listData.ordersTotalprice.toString()} \$",//
+                  "Total Price : ${listData.ordersTotalprice.toString()} \$", //
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
@@ -57,7 +57,8 @@ class CardOrderList extends GetView<OrdersPendingController> {
                 ),
                 const Spacer(),
                 MaterialButton(
-                  shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                  shape: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
                   color: AppColor.thirdColor,
                   onPressed: () {
                     Get.toNamed(AppNamesRouts.detailsorder,
@@ -74,19 +75,35 @@ class CardOrderList extends GetView<OrdersPendingController> {
                   width: 5,
                 ),
                 if (listData.ordersStatus == 0)
-                MaterialButton(
-                  shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                  color: AppColor.thirdColor,
-                  onPressed: () {
-                    controller.deleteOrders(listData.ordersId.toString());
-                  },
-                  child: const Text(
-                    "Delete",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.secondColor),
+                  MaterialButton(
+                    shape: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    color: AppColor.thirdColor,
+                    onPressed: () {
+                      controller.deleteOrders(listData.ordersId.toString());
+                    },
+                    child: const Text(
+                      "Delete",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColor.secondColor),
+                    ),
                   ),
-                )
+                if (listData.ordersStatus == 3)
+                  MaterialButton(
+                    shape: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    color: AppColor.thirdColor,
+                    onPressed: () {
+                      controller.gotopageTracking(listData);
+                    },
+                    child: const Text(
+                      "Tracking",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColor.secondColor),
+                    ),
+                  )
               ],
             )
           ],
@@ -95,4 +112,3 @@ class CardOrderList extends GetView<OrdersPendingController> {
     );
   }
 }
-
