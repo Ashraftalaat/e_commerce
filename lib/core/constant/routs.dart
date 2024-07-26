@@ -40,4 +40,7 @@ class AppNamesRouts {
   static const String addressview = "/addressview";
   static const String addressadd = "/addressadd";
   static const String addressadddetails = "/addressadddetails";
+
+   // payment
+  static const String registerpayment = "/register";
 }

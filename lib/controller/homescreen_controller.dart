@@ -1,3 +1,4 @@
+
 import 'package:e_commerce/view/screen/home.dart';
 import 'package:e_commerce/view/screen/notification.dart';
 import 'package:e_commerce/view/screen/offers.dart';
@@ -30,4 +31,6 @@ class HomeScreenControllerImp extends HomeScreenController {
     currentpage = i;
     update();
   }
+
+
 }

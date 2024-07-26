@@ -11,10 +11,14 @@ class AppLinkApi {
 
   static const String test = "$server/test.php";
 
+
   //======================= Svg Image ==================
   static const String imagestatic = "http://192.168.1.4/ecommerce/upload";
   static const String imagestcategories = "$imagestatic/categories";
   static const String imagestitems = "$imagestatic/items";
+
+    //======================  users  ========================
+  static const String users = "$server/users.php";
 
   //======================  Auth  ========================
   static const String signup = "$server/auth/signup.php";
@@ -66,8 +70,27 @@ class AppLinkApi {
 
 //======================  Notification  ========================
   static const String notification = "$server/notification.php";
+  static const String deletenotification = "$server/notification/delete.php";
+
 
   //======================  Offers  ========================
   static const String offers = "$server/offers.php";
   static const String rating = "$server/rating.php";
+
+
+  //========================= Payment Api ===============================
+    //  https://accept.paymob.com/api/auth/tokens
+  static const String baseurl = "https://accept.paymob.com/api";
+  static const String apikey = "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2T1RnME5qZzVMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuRXBOTVFpZGlIbmRzQUExQnBtOTVOYU92YXBwWExvZUh3Q3FTRzJKSlJueVhlRGFFRjBXVTlJVFpyUXJfT2ctLXRmMFNlWndpNXJ3Sk9qZkxQUEpqYWc=";
+  static const String getauthtoken = "/auth/tokens";
+  // https://accept.paymob.com/api/ecommerce/orders
+  static const String getorderid = "/ecommerce/orders";
+  // token اللي رجع هنخذنه في متغير بدل منعمل موديل لية لانه token فقط
+  static  String paymentfirsttoken = "";
+  //orderid اللي رجع هنخذنه في متغير بدل منعمل موديل لية لانه orderid فقط
+  static  String paymentorderid = "";
+  
+  static const String cardPaymentMethodIntegrationId = "4609106";
+
+
 }

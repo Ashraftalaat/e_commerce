@@ -14,7 +14,7 @@ class CheckOut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CheckOutController Controller = Get.put(CheckOutController());
+    CheckOutController controller = Get.put(CheckOutController());
     return Scaffold(
         appBar: AppBar(
           title: const Text("CheckOut"),
@@ -26,7 +26,10 @@ class CheckOut extends StatelessWidget {
             textColor: Colors.white,
             color: AppColor.secondColor,
             onPressed: () {
-              Controller.checkout();
+              controller.checkout();
+              // if (controller.paymentMethod == "1") {
+              //   controller.gotoPayment();
+              // }
             },
             child: const Text(
               "CheckOut",
@@ -67,6 +70,7 @@ class CheckOut extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             controller.choosePaymentMethod("1");
+                           // controller.gotoPayment();
                           },
                           child: CardPaymentMethodCheckOut(
                               title: "Payment Cards",
@@ -122,12 +126,12 @@ class CheckOut extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               if (controller.dataaddress.isNotEmpty)
-                              const Text(
-                                "Shipping Address",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColor.secondColor),
-                              ),
+                                const Text(
+                                  "Shipping Address",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColor.secondColor),
+                                ),
                               if (controller.dataaddress.isEmpty)
                                 InkWell(
                                   onTap: () {

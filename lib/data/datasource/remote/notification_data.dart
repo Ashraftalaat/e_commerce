@@ -12,4 +12,12 @@ class NotificationData {
     //fold بترجع 2 parmeter l & r
     return response.fold((l) => l, (r) => r);
   }
+
+    deleteData(String usersid,String notificationid) async {
+    //لاستقبال وعرض البيانات فقط
+    var response = await crud.postdata(AppLinkApi.deletenotification, {"usersid": usersid,"notificationid":notificationid});
+    //fold بترجع 2 parmeter l & r
+    return response.fold((l) => l, (r) => r);
+  }
+
 }

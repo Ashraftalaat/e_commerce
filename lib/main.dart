@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       translations: MyTranslation(),
       debugShowCheckedModeBanner: false,
       //  title: 'Flutter Demo',
-        theme: controller.appTheme,
+      theme: controller.appTheme,
       //وضعناها في routes كقيمة افتراضية تظهر في اول البرنامج "/"
       // home: const Language(),
       // هنستخدم Getpage بدل منها لاننا نستخدم GetX

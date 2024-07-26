@@ -22,12 +22,12 @@ fcmConfig() {
   // onMessage هي عبارة عن stream بنستخدم listen
   FirebaseMessaging.onMessage.listen((message) {
     print("++++++++Notification");
-    print(message.notification!.title);
-    print(message.notification!.body);
+    print(message.notification!.title.toString());
+    print(message.notification!.body.toString());
     //باكدج لاظهار الصوت
     FlutterRingtonePlayer().playNotification();
 // الرسال هيتم استخدام Get.snackbar الموجودة في GetX ....او مكتبة local Notification
-    Get.snackbar(message.notification!.title!, message.notification!.body!);
+    Get.snackbar(message.notification!.title!.toString(), message.notification!.body!.toString());
     refreshPageNotification(message.data);
   });
 }

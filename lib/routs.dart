@@ -23,6 +23,7 @@ import 'package:e_commerce/view/screen/orders/archive.dart';
 import 'package:e_commerce/view/screen/orders/details.dart';
 import 'package:e_commerce/view/screen/orders/pending.dart';
 import 'package:e_commerce/view/screen/orders/tracking.dart';
+import 'package:e_commerce/view/screen/payment/register.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -82,6 +83,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppNamesRouts.addressadddetails,
       page: () => const AddressAddDetails()),
+
+  // Payment
+  GetPage(name: AppNamesRouts.registerpayment, page: () => const RegisterPayment()),
 ];
 
 // // يفضل الروت خارج constant لسهولة التنقل بين الصفحات

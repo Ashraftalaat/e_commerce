@@ -10,12 +10,12 @@ class NotificationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(NotificationController());
+   Get.put(NotificationController());
     return Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         child: GetBuilder<NotificationController>(
-            builder: (controller) => HandingDataView(
-                statusRequest: controller.statusRequest,
+            builder: (controllernot) => HandingDataView(
+                statusRequest: controllernot.statusRequest,
                 widget: ListView(
                   children: [
                     const Center(
@@ -27,26 +27,43 @@ class NotificationPage extends StatelessWidget {
                             fontSize: 20),
                       ),
                     ),
-                    const SizedBox(height: 20,),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     ...List.generate(
-                      controller.data.length,
+                      controllernot.data.length,
                       (index) => Container(
                         padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Stack(
                           children: [
                             ListTile(
                               title: Text(
-                                "${controller.data[index]['notification_title']}",
-                                style: const TextStyle(fontWeight: FontWeight.bold),
+                                "${controllernot.data[index].notificationTitle}",
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
                               ),
                               subtitle: Text(
-                                  "${controller.data[index]['notification_body']}"),
+                                  "${controllernot.data[index].notificationBody}"),
+                              trailing: IconButton(
+                                  onPressed: () {
+                                    controllernot.deleteNotification(controllernot
+                                        .data[index].notificationId
+                                        .toString());
+                                   
+                                  },
+                                  icon: const Icon(Icons.disabled_by_default_outlined,color: Colors.red,)),
                             ),
                             Positioned(
-                              right: 5,
-                              child: Text( Jiffy.parse("${controller.data[index]['notification_datetime']}").fromNow(),
-                                          style: const TextStyle(
-                        color: AppColor.primaryColor, fontWeight: FontWeight.bold),))
+                              right: 90,
+                              child: Text(
+                                Jiffy.parse(
+                                        "${controllernot.data[index].notificationDatetime}")
+                                    .fromNow(),
+                                style: const TextStyle(
+                                    color: AppColor.primaryColor,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
                           ],
                         ),
                       ),

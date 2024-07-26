@@ -96,6 +96,9 @@ class CheckOutController extends GetxController {
       if (response['status'] == "success") {
         Get.offAllNamed(AppNamesRouts.homescreen);
         Get.snackbar("Success", "The order was Successfully");
+        if (paymentMethod == "1") {
+          gotoPayment();
+        }
       } else {
         statusRequest = StatusRequest.none;
         Get.snackbar("Error", "Try agian");
@@ -103,6 +106,10 @@ class CheckOutController extends GetxController {
       }
     }
     update();
+  }
+
+  gotoPayment() {
+    Get.toNamed(AppNamesRouts.registerpayment);
   }
 
   @override

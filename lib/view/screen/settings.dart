@@ -11,9 +11,10 @@ class Setting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SettingsController controller = Get.put(SettingsController());
+    Get.put(SettingsController());
     return Scaffold(
-      body: ListView(
+        body: GetBuilder<SettingsController>(
+      builder: (controller) => ListView(
         children: [
           Stack(
             clipBehavior: Clip.none,
@@ -40,27 +41,53 @@ class Setting extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 100,
+            height: 50,
+          ),
+          ...List.generate(
+            controller.data.length,
+            (index) => Column(
+              children: [
+                Center(
+                  child: Text(
+                    "${controller.data[index].usersName}",
+                    style: const TextStyle(color: AppColor.primaryColor),
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    "${controller.data[index].usersEmail}",
+                    style: const TextStyle(color: AppColor.darkblue),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 30,
           ),
           Card(
             child: Column(
               children: [
                 ListTile(
                   title: const Text("Disable Notification"),
-                  trailing: Switch(value: true, onChanged: (val) {}),
+                  trailing: Switch(
+                      value: controller.status,
+                      onChanged: (val) {
+                        controller.disableNotification(val);
+                      }),
                 ),
                 const Divider(),
                 ListTile(
                   title: const Text("Orders"),
-                  trailing: const Icon(Icons.card_travel),
+                  leading: const Icon(Icons.card_travel),
                   onTap: () {
                     Get.toNamed(AppNamesRouts.pendingorder);
                   },
                 ),
-                 const Divider(),
+                const Divider(),
                 ListTile(
                   title: const Text("Archive"),
-                  trailing: const Icon(Icons.card_travel),
+                  leading: const Icon(Icons.card_travel),
                   onTap: () {
                     Get.toNamed(AppNamesRouts.archiveorder);
                   },
@@ -68,31 +95,53 @@ class Setting extends StatelessWidget {
                 const Divider(),
                 ListTile(
                   title: const Text("Address"),
-                  trailing: const Icon(Icons.location_on_outlined),
+                  leading: const Icon(Icons.location_on_outlined),
                   onTap: () {
                     Get.toNamed(AppNamesRouts.addressview);
                   },
                 ),
                 const Divider(),
                 ListTile(
+                  title: const Text("Payment"),
+                  leading: const Icon(Icons.help_outline_rounded),
+                  onTap: () {
+                    controller.gotoregisterpayment();
+                  },
+                ),
+                const Divider(),
+                ListTile(
                   title: const Text("About us"),
-                  trailing: const Icon(Icons.help_outline_rounded),
+                  leading: const Icon(Icons.help_outline_rounded),
                   onTap: () {},
                 ),
                 const Divider(),
                 ListTile(
                   title: const Text("Contact us"),
-                  trailing: const Icon(Icons.phone_callback_outlined),
-                  onTap: () async{
+                  leading: const Icon(Icons.phone_callback_outlined),
+                  onTap: () async {
                     launchUrl(Uri.parse("tel:01122449170"));
                   },
                 ),
                 const Divider(),
                 ListTile(
                   title: const Text("Logout"),
-                  trailing: const Icon(Icons.exit_to_app),
+                  leading: const Icon(Icons.exit_to_app),
                   onTap: () {
-                    controller.logout();
+                    Get.defaultDialog(
+                        title: "Warnning",
+                        titleStyle: const TextStyle(
+                            color: AppColor.secondColor,
+                            fontWeight: FontWeight.bold),
+                        middleText: "Do you Want to Exit The App",
+                        middleTextStyle: const TextStyle(color: AppColor.black),
+                        onConfirm: () {
+                          controller.logout();
+                        },
+                        confirmTextColor: AppColor.secondColor,
+                        onCancel: () {},
+                        cancelTextColor: AppColor.secondColor,
+                        buttonColor: AppColor.thirdColor);
+                    // alertExitApp();
                   },
                 ),
               ],
@@ -100,6 +149,6 @@ class Setting extends StatelessWidget {
           )
         ],
       ),
-    );
+    ));
   }
 }
